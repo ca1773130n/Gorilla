@@ -1,0 +1,6 @@
+CBCGPRibbonPanel* pPanelThread = pCategory->AddPanel (_T("Thread"));
+pPanelThread->SetCenterColumnVert ();
+CBCGPRibbonEdit* pBtn7 = new CBCGPRibbonEdit (IDC_EDIT_THREAD, 50, _T("Thread"), 1);
+pBtn7->EnableSpinButtons (1, 99);
+pBtn7->SetEditText (_T("1"));
+pPanelThread->Add (pBtn7);

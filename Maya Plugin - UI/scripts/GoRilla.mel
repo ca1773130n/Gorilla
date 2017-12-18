@@ -1,0 +1,1873 @@
+global string 	$modelPanel;
+global string 	$modelPanel2;
+global string 	$windowName;
+global string 	$nodeName;
+global string 	$tempcam[];
+global string 	$curRenderer;
+global string 	$cachefile;
+global string 	$modelPanel;
+global string 	$renderPanel;
+global string 	$caLight[];
+global string 	$caShader[];
+global int 		$isviLight[];
+
+global int 		$islinkShaderColor[];
+global float 	$ColorcacheR[];
+global float 	$ColorcacheG[];
+global float 	$ColorcacheB[];
+global string 	$sColorcache[];
+
+global int 		$islinkShaderAmbient[];
+global float 	$AmbientcacheR[];
+global float 	$AmbientcacheG[];
+global float 	$AmbientcacheB[];
+global string 	$sAmbientcache[];
+
+global int 		$islinkreflectivity[];
+global float 	$reflectivitycache[];
+global string 	$sreflectivitycache[];
+
+global string 	$cbIncludeFG;
+global string 	$cbIncludeAO;
+global string 	$bakingProgressBar;
+
+global string 	$CameraName = " ";
+global string 	$SelectedCamera;
+
+global int 		$shaderform[];
+global string 	$bakeLight;
+global string 	$prefix;
+
+global string 	$cachetextfield;
+global string 	$objtextfield;
+
+global string 	$user_dir;
+global string 	$file_dir;
+$user_dir = `getenv "USERPROFILE"`;
+$file_dir = getenv("GoRillaPath") + "/";
+
+global int 		$ResX;
+global int 		$ResY;
+$ResX = `getAttr defaultResolution.width`;
+$ResY = `getAttr defaultResolution.height`;
+
+global string 	$wsdir;
+global string 	$cid[];
+$wsdir = $file_dir;
+$cid = `fileInfo -q "cutIdentifier"`;
+
+sysFile -makeDir ($wsdir + "cache");
+sysFile -makeDir ($wsdir + "image");
+
+global int $contador;
+global string $ambLight;
+
+global proc subnodemake(int $num)
+{
+	string $nodename = ("ajbake"+$num);
+	if(`objExists $nodename`)
+	{
+		delete $nodename;
+	}
+	createNode "transform" -n $nodename;
+
+	addAttr -ln cameraname -sn cn -dt "string" $nodename;
+	addAttr -ln cameraInverse -sn cim -at fltMatrix $nodename;
+	addAttr -ln focalLength -sn fl -at "float" $nodename;
+	addAttr -ln nearClip -sn nc -at "float" $nodename;
+	addAttr -ln farClip -sn fc -at "float" $nodename;
+	addAttr -ln filelocchannel -sn flch -dt "string" $nodename;
+	addAttr -ln fileloccolor -sn flc -dt "string" $nodename;
+	addAttr -ln filelocambient -sn fla -dt "string" $nodename;
+	addAttr -ln filelocdiffuse -sn fldif -dt "string" $nodename;
+	addAttr -ln filelocdepth -sn fld -dt "string" $nodename;
+	addAttr -ln filelocnormal -sn fln -dt "string" $nodename;
+	addAttr -ln filelocspecattr -sn flsa -dt "string" $nodename;
+	addAttr -ln filelocspeccolor -sn flsc -dt "string" $nodename;
+	addAttr -ln filelocfinalgather -sn flfg -dt "string" $nodename;
+	addAttr -ln filelocambientocclusion -sn flao -dt "string" $nodename;
+	addAttr -ln filelocobject -sn flo -dt "string" $nodename;
+    addAttr -ln filelococoverage -sn flco -dt "string" $nodename;
+
+	parent $nodename "otherBakeNode";
+
+}
+global proc nodemake()
+{
+	global string $file_dir;
+	if(`objExists otherBakeNode`)
+	{
+    	delete otherBakeNode;
+ 	   /*
+		int $nc = `getAttr otherBakeNode.noc`;
+		$nc = $nc + 1;
+		subnodemake($nc);
+		setAttr otherBakeNode.noc $nc;
+        */
+    }
+	//else
+	{
+		createNode "transform" -n "otherBakeNode";
+
+		addAttr -ln file_dir -sn fd -dt "string" otherBakeNode;
+		setAttr otherBakeNode.fd -type "string" $file_dir;
+
+		addAttr -ln cache_dir -sn cd -dt "string" otherBakeNode;
+		addAttr -ln obj_dir -sn od -dt "string" otherBakeNode;
+
+		addAttr -ln numoflight -sn nol -dv 0 -at short otherBakeNode;
+		addAttr -ln lightName -sn ln -dt stringArray otherBakeNode;
+		addAttr -ln cameraName -sn cn -dt "string" otherBakeNode;
+		addAttr -ln numofcache -sn noc -dv 0 -at short otherBakeNode;
+		addAttr -ln sel -sn sel -dt "string" otherBakeNode;
+
+		subnodemake(1);
+		setAttr otherBakeNode.noc 1;
+	}
+
+}
+
+
+global proc shaderinitbake()
+{
+	global string $caLight[];
+	global string $caShader[];
+
+	global int $isviLight[];
+
+	global int $islinkShaderColor[];
+	global float $ColorcacheR[];
+	global float $ColorcacheG[];
+	global float $ColorcacheB[];
+	global string $sColorcache[];
+
+	global int $islinkShaderAmbient[];
+	global float $AmbientcacheR[];
+	global float $AmbientcacheG[];
+	global float $AmbientcacheB[];
+	global string $sAmbientcache[];
+
+	global int $islinkreflectivity[];
+	global float $reflectivitycache[];
+	global string $sreflectivitycache[];
+
+	global int $shaderform[];
+	global string $bakeLight;
+
+	global string $prefix;
+
+	global string $CameraName;
+
+	global string $cachetextfield;
+	global string $objtextfield;
+
+	global string $wsdir;
+	global string $cid[];
+
+
+	// 현재 렌더러 저장, 멘탈레이로 변경
+	global string $curRenderer;
+	$curRenderer = `currentRenderer`;
+	setCurrentRenderer mentalRay;
+
+	// 베이킹 정보 노드 생성
+	nodemake();
+
+	global string $cachetext;
+    global string $objtext;
+	$cachetext = $wsdir+"cache/"+$cid[0]+"_"+$CameraName+".cache";
+	$objtext = "cache/"+$cid[0]+"_"+$CameraName+".obj";
+
+	sysFile -makeDir ($wsdir + "image/"+$cid[0]);
+	sysFile -makeDir ($wsdir + "image/"+$cid[0]+"/"+$CameraName);
+
+	setAttr otherBakeNode.cd -type "string" $cachetext;
+	setAttr otherBakeNode.od -type "string" $objtext;
+
+	$caLight = `ls -typ light`;
+	$caShader = `ls -typ lambert`;
+
+	setAttr "defaultRenderGlobals.imageFormat" 19;
+	$prefix = `getAttr defaultRenderGlobals.imageFilePrefix`;
+
+	string $light_name[];
+
+	int $temp_num = 0;
+	int $iter;
+
+	// visible 라이트들 정보 얻고 총 라이트 카운트
+	string $firstparent;
+	for($iter = 0;$iter < size($caLight);$iter++)
+	{
+		$firstparent = firstParentOf($caLight[$iter]);
+
+		if(getAttr(($firstparent+".visibility")))
+		{
+			setAttr ($firstparent+".visibility") 0;
+			$isviLight[$iter] = 1;
+			$light_name[$temp_num] = $caLight[$iter];
+			$temp_num = $temp_num+1;
+		}
+		else
+		{
+			$isviLight[$iter] = 0;
+		}
+	}
+	setAttr otherBakeNode.nol $temp_num;
+
+	// 조명 이름들 stringarray에 저장
+	string $light_save = ("setAttr otherBakeNode.ln -type stringArray "+$temp_num+" ");
+	for($iter = 0;$iter < $temp_num;$iter++)
+	{
+		$light_save = ($light_save + "\"" +$light_name[$iter] + "\" ");
+	}
+	eval($light_save);
+
+	// 카메라 정보 얻음
+	float $cam_matrix[] = `getAttr ($CameraName+".worldInverseMatrix")`;
+	float $cam_fl = `getAttr ($CameraName+".focalLength")`;
+	int $nc = `getAttr otherBakeNode.noc`;
+
+	setAttr ("ajbake"+$nc+".fl") $cam_fl;
+	setAttr ("ajbake"+$nc+".cim") -type "matrix" $cam_matrix[0] $cam_matrix[4] $cam_matrix[8] $cam_matrix[12] $cam_matrix[1] $cam_matrix[5] $cam_matrix[9] $cam_matrix[13] $cam_matrix[2] $cam_matrix[6] $cam_matrix[10] $cam_matrix[14] $cam_matrix[3] $cam_matrix[7] $cam_matrix[11] $cam_matrix[15];
+	setAttr ("ajbake"+$nc+".cn") -type "string" $CameraName;
+
+	// FG를 위한 ambient 라이트
+	$bakeLight = `ambientLight -as 0.0 -rgb 1.0 1.0 1.0 -i 1.0`;
+
+	// 셰이더 종류에 따라 속성 지정
+	for($iter = 0;$iter < size($caShader);$iter++)
+	{
+		string $temptype = objectType($caShader[$iter]);
+		if(strcmp($temptype,"lambert") == 0)
+		{
+			$shaderform[$iter] = 1;
+		}
+		else if(strcmp($temptype,"blinn") == 0)
+		{
+			$shaderform[$iter] = 2;
+		}
+		else if(strcmp($temptype,"phong") == 0)
+		{
+			$shaderform[$iter] = 3;
+		}
+		else if(strcmp($temptype,"phongE") == 0)
+		{
+			$shaderform[$iter] = 4;
+		}
+		else if(strcmp($temptype,"anisotropic") == 0)
+		{
+			$shaderform[$iter] = 5;
+		}
+		else
+		{
+			$shaderform[$iter] = 0;
+		}
+
+		if($shaderform[$iter] != 0)
+		{
+			int $test_temp = `connectionInfo -isDestination ($caShader[$iter]+".color")`;
+			float $tr,$tg,$tb;
+
+			if($test_temp)
+			{
+				$islinkShaderColor[$iter] = 1;
+				$sColorcache[$iter] = `connectionInfo -sourceFromDestination ($caShader[$iter]+".color")`;
+				$ColorcacheR[$iter] = 0.0;
+				$ColorcacheG[$iter] = 0.0;
+				$ColorcacheB[$iter] = 0.0;
+				disconnectAttr $sColorcache[$iter] ($caShader[$iter]+".color");
+				setAttr ($caShader[$iter]+".color") 0.0 0.0 0.0;
+			}
+			else
+			{
+				$tr = getAttr($caShader[$iter]+".colorR");
+				$tg = getAttr($caShader[$iter]+".colorG");
+				$tb = getAttr($caShader[$iter]+".colorB");
+
+				$islinkShaderColor[$iter] = 0;
+				$sColorcache[$iter] = 0;
+				$ColorcacheR[$iter] = $tr;
+				$ColorcacheG[$iter] = $tg;
+				$ColorcacheB[$iter] = $tb;
+				setAttr ($caShader[$iter]+".color") 0.0 0.0 0.0;
+			}
+			$test_temp = `connectionInfo -isDestination ($caShader[$iter]+".ambientColor")`;
+
+			if($test_temp)
+			{
+				$islinkShaderAmbient[$iter] = 1;
+				$sAmbientcache[$iter] = `connectionInfo -sourceFromDestination ($caShader[$iter]+".ambientColor")`;
+				$AmbientcacheR[$iter] = 0.0;
+				$AmbientcacheG[$iter] = 0.0;
+				$AmbientcacheB[$iter] = 0.0;
+				disconnectAttr $sAmbientcache[$iter] ($caShader[$iter]+".ambientColor");
+				setAttr ($caShader[$iter]+".ambientColor") 0.0 0.0 0.0;
+			}
+			else
+			{
+				$tr = getAttr($caShader[$iter]+".ambientColorR");
+				$tg = getAttr($caShader[$iter]+".ambientColorG");
+				$tb = getAttr($caShader[$iter]+".ambientColorB");
+
+				$islinkShaderAmbient[$iter] = 0;
+				$sAmbientcache[$iter] = 0;
+				$AmbientcacheR[$iter] = $tr;
+				$AmbientcacheG[$iter] = $tg;
+				$AmbientcacheB[$iter] = $tb;
+				setAttr ($caShader[$iter]+".ambientColor") 0.0 0.0 0.0;
+			}
+
+			if($shaderform[$iter] != 1)
+			{
+
+				$test_temp = `connectionInfo -isDestination ($caShader[$iter]+".reflectivity")`;
+				if($test_temp)
+				{
+					$islinkreflectivity[$iter] = 1;
+					$sreflectivitycache[$iter] = `connectionInfo -sourceFromDestination ($caShader[$iter]+".reflectivity")`;
+					$reflectivitycache[$iter] = 0.0;
+					disconnectAttr $sAmbientcache[$iter] ($caShader[$iter]+".reflectivity");
+					setAttr ($caShader[$iter]+".reflectivity") 0.0;
+				}
+				else
+				{
+					$tr = getAttr($caShader[$iter]+".reflectivity");
+
+					$islinkreflectivity[$iter] = 0;
+					$sreflectivitycache[$iter] = 0;
+					$reflectivitycache[$iter] = $tr;
+
+					setAttr ($caShader[$iter]+".reflectivity") 0.0;
+				}
+			}
+		}
+	}
+}
+
+
+global proc shaderclear()
+{
+	global string $caLight[];
+	global string $caShader[];
+
+	global int $isviLight[];
+
+	global int $islinkShaderColor[];
+	global float $ColorcacheR[];
+	global float $ColorcacheG[];
+	global float $ColorcacheB[];
+	global string $sColorcache[];
+
+	global int $islinkShaderAmbient[];
+	global float $AmbientcacheR[];
+	global float $AmbientcacheG[];
+	global float $AmbientcacheB[];
+	global string $sAmbientcache[];
+
+	global int $shaderform[];
+
+	for($iter = 0;$iter < size($caShader);$iter++)
+	{
+		if($shaderform[$iter] != 0)
+		{
+			int $test_temp = `connectionInfo -isDestination ($caShader[$iter]+".color")`;
+			string $connect_temp;
+
+			if($test_temp)
+			{
+				$connect_temp = `connectionInfo -sourceFromDestination ($caShader[$iter]+".color")`;
+				disconnectAttr $connect_temp ($caShader[$iter]+".color");
+			}
+			else
+			{
+				int $test_temprgb = `connectionInfo -isDestination ($caShader[$iter]+".colorR")`;
+				if($test_temprgb)
+				{
+					$connect_temp = `connectionInfo -sourceFromDestination ($caShader[$iter]+".colorR")`;
+					disconnectAttr $connect_temp ($caShader[$iter]+".colorR");
+				}
+				$test_temprgb = `connectionInfo -isDestination ($caShader[$iter]+".colorG")`;
+				if($test_temprgb)
+				{
+					$connect_temp = `connectionInfo -sourceFromDestination ($caShader[$iter]+".colorG")`;
+					disconnectAttr $connect_temp ($caShader[$iter]+".colorG");
+				}
+				$test_temprgb = `connectionInfo -isDestination ($caShader[$iter]+".colorB")`;
+				if($test_temprgb)
+				{
+					$connect_temp = `connectionInfo -sourceFromDestination ($caShader[$iter]+".colorB")`;
+					disconnectAttr $connect_temp ($caShader[$iter]+".colorB");
+				}
+			}
+			setAttr ($caShader[$iter]+".color") 0.0 0.0 0.0;
+		}
+	}
+}
+
+
+global proc shaderreturnbake()
+{
+	global string $caLight[];
+	global string $caShader[];
+
+	global int $isviLight[];
+
+	global int $islinkShaderColor[];
+	global float $ColorcacheR[];
+	global float $ColorcacheG[];
+	global float $ColorcacheB[];
+	global string $sColorcache[];
+
+	global int $islinkShaderAmbient[];
+	global float $AmbientcacheR[];
+	global float $AmbientcacheG[];
+	global float $AmbientcacheB[];
+	global string $sAmbientcache[];
+
+	global int $islinkreflectivity[];
+	global float $reflectivitycache[];
+	global string $sreflectivitycache[];
+
+	global int $shaderform[];
+	global string $bakeLight;
+	global string $ambLight;
+
+	global string $prefix;
+	global string $CameraName;
+
+	setAttr -type "string" defaultRenderGlobals.imageFilePrefix $prefix;
+
+	//delete (firstParentOf($bakeLight));
+	shaderclear();
+
+	string $firstparent;
+
+	for($iter = 0;$iter < size($caLight);$iter++)
+	{
+		if($isviLight[$iter])
+		{
+			$firstparent = firstParentOf($caLight[$iter]);
+			setAttr ($firstparent+".visibility") 1;
+		}
+	}
+
+	for($iter = 0;$iter < size($caShader);$iter++)
+	{
+		if($shaderform[$iter] != 0)
+		{
+			if($islinkShaderColor[$iter])
+			{
+				connectAttr -f $sColorcache[$iter] ($caShader[$iter]+".color");
+			}
+			else
+			{
+				setAttr ($caShader[$iter]+".color") ($ColorcacheR[$iter]) ($ColorcacheG[$iter]) ($ColorcacheB[$iter]);
+			}
+			if($islinkShaderAmbient[$iter])
+			{
+				connectAttr -f $sAmbientcache[$iter] ($caShader[$iter]+".ambientColor");
+			}
+			else
+			{
+				setAttr ($caShader[$iter]+".ambientColor") ($AmbientcacheR[$iter]) ($AmbientcacheG[$iter]) ($AmbientcacheB[$iter]);
+			}
+			if($shaderform[$iter] != 1)
+			{
+				if($islinkreflectivity[$iter])
+				{
+					connectAttr -f $sreflectivitycache[$iter] ($caShader[$iter]+".reflectivity");
+				}
+				else
+				{
+					setAttr ($caShader[$iter]+".reflectivity") ($reflectivitycache[$iter]);
+				}
+			}
+		}
+	}
+
+    // 렌더러 복원
+	global string $curRenderer;
+	//if( $curRenderer != "" ) setCurrentRenderer $curRenderer;
+
+    global string $modelPanel;
+    modelPanel -edit -camera gorelight $modelPanel;
+
+}
+
+global proc shaderchannelbake()
+{
+	global string $caLight[];
+	global string $caShader[];
+
+	global int $isviLight[];
+
+	global int $islinkShaderColor[];
+	global float $ColorcacheR[];
+	global float $ColorcacheG[];
+	global float $ColorcacheB[];
+	global string $sColorcache[];
+
+	global int $islinkShaderAmbient[];
+	global float $AmbientcacheR[];
+	global float $AmbientcacheG[];
+	global float $AmbientcacheB[];
+	global string $sAmbientcache[];
+
+	global int $shaderform[];
+
+	global string $prefix;
+
+	global string $CameraName;
+
+	int $nc = `getAttr otherBakeNode.noc`;
+
+	setAttr -type "string" defaultRenderGlobals.imageFilePrefix ("channel_"+$prefix+$nc);
+	shaderclear();
+
+	for($iter = 0;$iter < size($caShader);$iter++)
+	{
+		switch($shaderform[$iter])
+		{
+		case 0:
+			setAttr ($caShader[$iter]+".color")  0.0 0.0 0.0;
+			break;
+		case 1:
+			setAttr ($caShader[$iter]+".color")  1.0 0.0 0.0;
+			break;
+		case 2:
+			setAttr ($caShader[$iter]+".color")  0.0 1.0 0.0;
+			break;
+		case 3:
+			setAttr ($caShader[$iter]+".color")  0.0 0.0 1.0;
+			break;
+		case 4:
+			setAttr ($caShader[$iter]+".color")  1.0 1.0 0.0;
+			break;
+		case 5:
+			setAttr ($caShader[$iter]+".color")  1.0 0.0 1.0;
+			break;
+		}
+	}
+
+	RenderViewWindow;
+
+	string $file =`render -l defaultRenderLayer $CameraName`;
+
+	global int $contador;
+	$contador  = $contador + 10;
+
+	global string $bakingProgressBar;
+	progressBar -edit -step 140 $bakingProgressBar;
+
+	global string $wsdir;
+	global string $cid[];
+	sysFile -rename ($wsdir + "image/"+$cid[0]+"/"+$CameraName+"/channel.tga") $file;
+	$file = "image/"+$cid[0]+"/"+$CameraName+"/channel.tga";
+
+	setAttr ("ajbake"+$nc+".flch") -type "string" $file;
+}
+
+global proc sag_tagShapes() {
+
+	select -cl;
+	select -adn;
+	int $i=1;
+	string $objShapes[] = `ls -sl -type geometryShape`;
+	print $objShapes;
+
+	for ($curObjShape in $objShapes) {
+		string $objType = `objectType $curObjShape`;
+
+		if ($objType == "mesh" || $objType == "nurbsSurface" || $objType == "subdiv") {
+			addAttr -ln miLabel -at long -k 1 $curObjShape;
+			setAttr ($curObjShape+".miLabel") $i;
+			$i++;
+		}
+	}
+}
+
+global proc sag_tagTransforms() {
+
+	select -cl;
+	select -adn;
+	int $i=1;
+	string $objShapes[] = `ls -sl -type geometryShape`;
+	print $objShapes;
+
+	for ($curObjShape in $objShapes) {
+		string $objType = `objectType $curObjShape`;
+
+		if ($objType == "mesh" || $objType == "nurbsSurface" || $objType == "subdiv") {
+			string $curObjParent = `firstParentOf($curObjShape)`;
+			addAttr -ln miLabel -at long -k 1 $curObjParent;
+			setAttr ($curObjParent+".miLabel") $i;
+			$i++;
+		}
+	}
+}
+
+global proc shadercolorbake()
+{
+	global string $caLight[];
+	global string $caShader[];
+
+	global int $isviLight[];
+
+	global int $islinkShaderColor[];
+	global float $ColorcacheR[];
+	global float $ColorcacheG[];
+	global float $ColorcacheB[];
+	global string $sColorcache[];
+
+	global int $islinkShaderAmbient[];
+	global float $AmbientcacheR[];
+	global float $AmbientcacheG[];
+	global float $AmbientcacheB[];
+	global string $sAmbientcache[];
+
+	global int $shaderform[];
+
+	global string $wsdir;
+	global string $cid[];
+	global string $prefix;
+
+	global string $CameraName;
+
+	setCurrentRenderer mentalRay;
+    updateRendererUI;
+
+    // 라벨 패스 셋팅
+	setAttr "mentalrayGlobals.passLabelThrough" 1;
+
+	// 태깅되어있지 않은경우만 라벨 태깅, object pass 뽑기 위함
+	string $geos[] = `ls -geometry`;
+	if( attributeExists("miLabel", $geos[0]) == false )
+	{
+		sag_tagShapes();
+	}
+
+	// 카메라 노드 custom framebuffer 설정
+	select $CameraName;
+	string $camShape[] = `pickWalk -d down`;
+
+	// 라벨링 패스
+	createNode mentalrayOutputPass -name mentalrayOutputPass0;
+	connectAttr -force mentalrayOutputPass0.message ($camShape[0] + ".miOutputShaderList[0]");
+	setAttr mentalrayOutputPass0.dataType 11;
+	setAttr "mentalrayOutputPass0.fileMode" 1;
+	setAttr mentalrayOutputPass0.fileFormat 8;
+
+	string $objectFile = ($wsdir + "image/"+$cid[0]+"/"+$CameraName+"/object.tga");
+	setAttr -type "string" mentalrayOutputPass0.fileName $objectFile;
+
+    // 커버리지 패스
+    createNode mentalrayOutputPass -name mentalrayOutputPass1;
+	connectAttr -force mentalrayOutputPass1.message ($camShape[0] + ".miOutputShaderList[1]");
+	setAttr mentalrayOutputPass1.dataType 13;
+	setAttr "mentalrayOutputPass1.fileMode" 1;
+	setAttr mentalrayOutputPass1.fileFormat 8;
+
+	string $coverageFile = ($wsdir + "image/"+$cid[0]+"/"+$CameraName+"/coverage.tga");
+	setAttr -type "string" mentalrayOutputPass1.fileName $coverageFile;
+
+    // 노멀 패스
+    /*
+    createNode mentalrayOutputPass -name mentalrayOutputPass2;
+	connectAttr -force mentalrayOutputPass2.message ($camShape[0] + ".miOutputShaderList[2]");
+	setAttr mentalrayOutputPass2.dataType 9;
+	setAttr "mentalrayOutputPass2.fileMode" 1;
+	setAttr mentalrayOutputPass2.fileFormat 8;
+
+	string $normalFile = ("image/"+$cid[0]+"/"+$CameraName+"/normal.tga");
+	setAttr -type "string" mentalrayOutputPass2.fileName $normalFile;
+    */
+
+	int $nc = `getAttr otherBakeNode.noc`;
+
+	setAttr -type "string" defaultRenderGlobals.imageFilePrefix ("color_"+$prefix+$nc);
+	shaderclear();
+
+	for($iter = 0;$iter < size($caShader);$iter++)
+	{
+		if($shaderform[$iter] != 0)
+		{
+			if($islinkShaderColor[$iter])
+			{
+				connectAttr -f $sColorcache[$iter] ($caShader[$iter]+".color");
+			}
+			else
+			{
+				setAttr ($caShader[$iter]+".color") ($ColorcacheR[$iter]) ($ColorcacheG[$iter]) ($ColorcacheB[$iter]);
+			}
+		}
+	}
+	global string $modelPanel;
+	string $camname;
+    /*
+	$modelPanels = `getPanel -type "modelPanel"`;
+
+	int $i;
+	for( $i=0; $i < size($modelPanels); $i = $i + 1 )
+	{
+		$camname = `modelPanel -q -cam $modelPanels[$i]`;
+		if( $camname == $CameraName ) {
+			setFocus $modelPanels[$i]; break;
+		}
+	}
+    */
+    setFocus $modelPanel;
+
+    RenderIntoNewWindow;
+
+	global int $contador;
+	$contador = $contador + 10;
+	global string $bakingProgressBar;
+	progressBar -edit -step 140 $bakingProgressBar;
+
+	global string $wsdir;
+	global string $cid[];
+	$file = $wsdir + "image/"+$cid[0]+"/"+$CameraName+"/color.tga";
+
+	global string $renderPanel;
+	renderWindowEditor -edit -writeImage $file $renderPanel;
+
+	string $colorFile;
+    $colorFile = "image/"+$cid[0]+"/"+$CameraName+"/color.tga";
+    $objectFile = "image/"+$cid[0]+"/"+$CameraName+"/object.tga";
+    $coverageFile = "image/"+$cid[0]+"/"+$CameraName+"/coverage.tga";
+	setAttr ("ajbake"+$nc+".flc") -type "string" $colorFile;
+	setAttr ("ajbake"+$nc+".flo") -type "string" $objectFile;
+    setAttr ("ajbake"+$nc+".flco") -type "string" $coverageFile;
+
+	disconnectAttr mentalrayOutputPass0.message ($camShape[0] + ".miOutputShaderList[0]");
+    disconnectAttr mentalrayOutputPass1.message ($camShape[0] + ".miOutputShaderList[1]");
+	delete mentalrayOutputPass0;
+	delete mentalrayOutputPass1;
+    //setAttr "mentalrayGlobals.passLabelThrough" 0;
+}
+
+global proc shaderambientbake()
+{
+	global string $caLight[];
+	global string $caShader[];
+
+	global int $isviLight[];
+
+	global int $islinkShaderColor[];
+	global float $ColorcacheR[];
+	global float $ColorcacheG[];
+	global float $ColorcacheB[];
+	global string $sColorcache[];
+
+	global int $islinkShaderAmbient[];
+	global float $AmbientcacheR[];
+	global float $AmbientcacheG[];
+	global float $AmbientcacheB[];
+	global string $sAmbientcache[];
+
+	global int $shaderform[];
+
+	global string $prefix;
+
+	global string $CameraName;
+
+	int $nc = `getAttr otherBakeNode.noc`;
+
+	setAttr -type "string" defaultRenderGlobals.imageFilePrefix ("ambient_"+$prefix+$nc);
+	shaderclear();
+
+	for($iter = 0;$iter < size($caShader);$iter++)
+	{
+		if($shaderform[$iter] != 0)
+		{
+			if($islinkShaderAmbient[$iter])
+			{
+				connectAttr -f $sAmbientcache[$iter] ($caShader[$iter]+".color");
+			}
+			else
+			{
+				setAttr ($caShader[$iter]+".color") ($AmbientcacheR[$iter]) ($AmbientcacheG[$iter]) ($AmbientcacheB[$iter]);
+			}
+		}
+	}
+
+	string $file = `render -l defaultRenderLayer $CameraName`;
+
+	global int $contador;
+
+	$contador = $contador + 10;
+
+	global string $bakingProgressBar;
+	progressBar -edit -step 140 $bakingProgressBar;
+
+	global string $wsdir;
+	global string $cid[];
+	sysFile -rename ($wsdir + "image/"+$cid[0]+"/"+$CameraName+"/ambient.tga") $file;
+	$file = "image/"+$cid[0]+"/"+$CameraName+"/ambient.tga";
+	setAttr ("ajbake"+$nc+".fla") -type "string" $file;
+}
+
+global proc shadediffusebake()
+{
+	global string $caLight[];
+	global string $caShader[];
+
+	global int $isviLight[];
+
+	global int $islinkShaderColor[];
+	global float $ColorcacheR[];
+	global float $ColorcacheG[];
+	global float $ColorcacheB[];
+	global string $sColorcache[];
+
+	global int $islinkShaderAmbient[];
+	global float $AmbientcacheR[];
+	global float $AmbientcacheG[];
+	global float $AmbientcacheB[];
+	global string $sAmbientcache[];
+
+	global int $shaderform[];
+
+	global string $prefix;
+
+	global string $CameraName;
+
+	int $nc = `getAttr otherBakeNode.noc`;
+
+	setAttr -type "string" defaultRenderGlobals.imageFilePrefix ("diffuse_"+$prefix+$nc);
+	shaderclear();
+
+	for($iter = 0;$iter < size($caShader);$iter++)
+	{
+		if($shaderform[$iter] != 0)
+		{
+			int $test_temp = `connectionInfo -isDestination ($caShader[$iter]+".diffuse")`;
+			string $connect_temp;
+			if($test_temp)
+			{
+				$connect_temp = `connectionInfo -sourceFromDestination ($caShader[$iter]+".diffuse")`;
+				connectAttr $connect_temp ($caShader[$iter]+".colorR");
+				connectAttr $connect_temp ($caShader[$iter]+".colorG");
+				connectAttr $connect_temp ($caShader[$iter]+".colorB");
+			}
+			else
+			{
+				float $temp_di = `getAttr ($caShader[$iter]+".diffuse")`;
+				setAttr ($caShader[$iter]+".color")  $temp_di $temp_di $temp_di;
+			}
+
+		}
+	}
+
+	string $file = `render -l defaultRenderLayer $CameraName`;
+
+	global int $contador;
+
+	$contador = $contador + 10;
+
+	global string $bakingProgressBar;
+	progressBar -edit -step 140 $bakingProgressBar;
+
+	global string $wsdir;
+	global string $cid[];
+	sysFile -rename ($wsdir + "image/"+$cid[0]+"/"+$CameraName+"/diffuse.tga") $file;
+	$file = "image/"+$cid[0]+"/"+$CameraName+"/diffuse.tga";
+	setAttr ("ajbake"+$nc+".fldif") -type "string" $file;
+}
+
+global proc shadernormalbake()
+{
+	global string $caShader[];
+	global int $shaderform[];
+	global string $prefix;
+	global string $CameraName;
+	global string $bakeLight;
+	global string $file_dir;
+
+	int $islinkShaderTrans[];
+	float $TranscacheR[];
+	float $TranscacheG[];
+	float $TranscacheB[];
+	string $sTranscache[];
+
+	int $islinkShaderDiffuse[];
+	float $Diffusecache[];
+	string $sDiffusecache[];
+
+	int $islinkShaderSpecular[];
+	float $SpecularcacheR[];
+	float $SpecularcacheG[];
+	float $SpecularcacheB[];
+	string $sSpecularcache[];
+
+	//setCurrentRenderer mayaSoftware;
+
+	shaderclear();
+    delete (firstParentOf($bakeLight));
+
+	for($iter = 0;$iter < size($caShader);$iter++)
+	{
+		if($shaderform[$iter] != 0)
+		{
+			int $test_temp = `connectionInfo -isDestination ($caShader[$iter]+".transparency")`;
+			float $tr,$tg,$tb;
+
+			if($test_temp)
+			{
+				$islinkShaderTrans[$iter] = 1;
+				$sTranscache[$iter] = `connectionInfo -sourceFromDestination ($caShader[$iter]+".transparency")`;
+				$TranscacheR[$iter] = 0.0;
+				$TranscacheG[$iter] = 0.0;
+				$TranscacheB[$iter] = 0.0;
+				disconnectAttr $sTranscache[$iter] ($caShader[$iter]+".transparency");
+				setAttr ($caShader[$iter]+".transparency") 0.0 0.0 0.0;
+			}
+			else
+			{
+				$tr = getAttr($caShader[$iter]+".transparencyR");
+				$tg = getAttr($caShader[$iter]+".transparencyG");
+				$tb = getAttr($caShader[$iter]+".transparencyB");
+
+				$islinkShaderTrans[$iter] = 0;
+				$sTranscache[$iter] = 0;
+				$TranscacheR[$iter] = $tr;
+				$TranscacheG[$iter] = $tg;
+				$TranscacheB[$iter] = $tb;
+				setAttr ($caShader[$iter]+".transparency") 0.0 0.0 0.0;
+			}
+
+			$test_temp = `connectionInfo -isDestination ($caShader[$iter]+".diffuse")`;
+			if($test_temp)
+			{
+				$islinkShaderDiffuse[$iter] = 1;
+				$sDiffusecache[$iter] = `connectionInfo -sourceFromDestination ($caShader[$iter]+".diffuse")`;
+				$Diffusecache[$iter] = 0.0;
+				disconnectAttr $sDiffusecache[$iter] ($caShader[$iter]+".diffuse");
+				setAttr ($caShader[$iter]+".diffuse") 1.0;
+			}
+			else
+			{
+				$tr = getAttr($caShader[$iter]+".diffuse");
+
+				$islinkShaderDiffuse[$iter] = 0;
+				$sDiffusecache[$iter] = 0;
+				$Diffusecache[$iter] = $tr;
+				setAttr ($caShader[$iter]+".diffuse") 1.0;
+			}
+
+			if($shaderform[$iter] != 1)
+			{
+				$test_temp = `connectionInfo -isDestination ($caShader[$iter]+".specularColor")`;
+				if($test_temp)
+				{
+					$islinkShaderSpecular[$iter] = 1;
+					$sSpecularcache[$iter] = `connectionInfo -sourceFromDestination ($caShader[$iter]+".specularColor")`;
+					$SpecularcacheR[$iter] = 0.0;
+					$SpecularcacheG[$iter] = 0.0;
+					$SpecularcacheB[$iter] = 0.0;
+					disconnectAttr $sSpecularcache[$iter] ($caShader[$iter]+".specularColor");
+					setAttr ($caShader[$iter]+".specularColor") 0.0 0.0 0.0;
+				}
+				else
+				{
+					$tr = getAttr($caShader[$iter]+".specularColorR");
+					$tg = getAttr($caShader[$iter]+".specularColorG");
+					$tb = getAttr($caShader[$iter]+".specularColorB");
+
+					$islinkShaderSpecular[$iter] = 0;
+					$sSpecularcache[$iter] = 0;
+					$SpecularcacheR[$iter] = $tr;
+					$SpecularcacheG[$iter] = $tg;
+					$SpecularcacheB[$iter] = $tb;
+					setAttr ($caShader[$iter]+".specularColor") 0.0 0.0 0.0;
+				}
+			}
+			setAttr ($caShader[$iter]+".color") 1.0 1.0 1.0;
+		}
+	}
+
+	defaultDirectionalLight(1, 0,0,1, "0", 0,0,0,0);
+	rename "norB";
+	defaultDirectionalLight(1, 0,1,0, "0", 0,0,0,0);
+	rename "norG";
+	setAttr "norG.rotateX" -90;
+	defaultDirectionalLight(1, 1,0,0, "0", 0,0,0,0);
+	rename "norR";
+	setAttr "norR.rotateY" 90;
+
+	select norR norG norB;
+	group -n norLight;
+
+	float $cam_matrix[] = `getAttr ($CameraName+".worldMatrix")`;
+	xform -m $cam_matrix[0] $cam_matrix[1] $cam_matrix[2] $cam_matrix[3] $cam_matrix[4] $cam_matrix[5] $cam_matrix[6] $cam_matrix[7] $cam_matrix[8] $cam_matrix[9] $cam_matrix[10] $cam_matrix[11] $cam_matrix[12] $cam_matrix[13] $cam_matrix[14] $cam_matrix[15] norLight;
+
+	createNode "transform" -n temp_nor;
+
+	addAttr -ln filelocnormal1 -sn fln1 -dt "string" temp_nor;
+	addAttr -ln filelocnormal2 -sn fln2 -dt "string" temp_nor;
+
+	int $nc = `getAttr otherBakeNode.noc`;
+	setAttr -type "string" defaultRenderGlobals.imageFilePrefix ("normal1_"+$prefix+$nc);
+
+	string $filea = `render $CameraName`;
+	setAttr temp_nor.fln1 -type "string" $filea;
+
+	setAttr -type "string" defaultRenderGlobals.imageFilePrefix ("normal2_"+$prefix+$nc);
+
+	setAttr "norR.rotateZ" 180;
+	setAttr "norG.rotateZ" 180;
+	setAttr "norB.rotateX" 180;
+	string $fileb = `render $CameraName`;
+	setAttr temp_nor.fln2 -type "string" $fileb;
+
+	loadPlugin ($file_dir+"GoRnormal2009x64.mll");
+	eval("nor_com");
+	eval("unloadPlugin -f (\"GoRnormal2009x64.mll\")");
+
+	global string $wsdir;
+	global string $cid[];
+	sysFile -rename ($wsdir + "image/"+$cid[0]+"/"+$CameraName+"/normal.tga") ($filea+"out");
+	setAttr ("ajbake"+$nc+".fln") -type "string" ("image/"+$cid[0]+"/"+$CameraName+"/normal.tga");
+
+	sysFile -delete $filea;
+	sysFile -delete $fileb;
+
+	delete temp_nor;
+	delete norLight;
+
+	for($iter = 0;$iter < size($caShader);$iter++)
+	{
+		if($shaderform[$iter] != 0)
+		{
+			if($islinkShaderTrans[$iter])
+			{
+				connectAttr -f $sTranscache[$iter] ($caShader[$iter]+".transparency");
+			}
+			else
+			{
+				setAttr ($caShader[$iter]+".transparency") ($TranscacheR[$iter]) ($TranscacheG[$iter]) ($TranscacheB[$iter]);
+			}
+			if($islinkShaderDiffuse[$iter])
+			{
+				connectAttr -f $sDiffusecache[$iter] ($caShader[$iter]+".diffuse");
+			}
+			else
+			{
+				setAttr ($caShader[$iter]+".diffuse") ($Diffusecache[$iter]);
+			}
+			if($shaderform[$iter] != 1)
+			{
+				if($islinkShaderSpecular[$iter])
+				{
+					connectAttr -f $sSpecularcache[$iter] ($caShader[$iter]+".specularColor");
+				}
+				else
+				{
+					setAttr ($caShader[$iter]+".specularColor") ($SpecularcacheR[$iter]) ($SpecularcacheG[$iter]) ($SpecularcacheB[$iter]);
+				}
+			}
+		}
+	}
+	global int $contador;
+
+	$contador = $contador + 10;
+
+	global string $bakingProgressBar;
+	progressBar -edit -step 140 $bakingProgressBar;
+}
+
+global proc shaderspecattrbake()
+{
+	global string $caLight[];
+	global string $caShader[];
+
+	global int $isviLight[];
+
+	global int $islinkShaderColor[];
+	global float $ColorcacheR[];
+	global float $ColorcacheG[];
+	global float $ColorcacheB[];
+	global string $sColorcache[];
+
+	global int $islinkShaderAmbient[];
+	global float $AmbientcacheR[];
+	global float $AmbientcacheG[];
+	global float $AmbientcacheB[];
+	global string $sAmbientcache[];
+
+	global int $islinkreflectivity[];
+	global float $reflectivitycache[];
+	global string $sreflectivitycache[];
+
+	global int $shaderform[];
+
+	global string $prefix;
+
+	global string $CameraName;
+
+	int $nc = `getAttr otherBakeNode.noc`;
+
+	setAttr -type "string" defaultRenderGlobals.imageFilePrefix ("specattr_"+$prefix+$nc);
+	shaderclear();
+
+	for($iter = 0;$iter < size($caShader);$iter++)
+	{
+		switch($shaderform[$iter])
+		{
+		case 0:
+			setAttr ($caShader[$iter]+".color")  0.0 0.0 0.0;
+			break;
+		case 1:
+			setAttr ($caShader[$iter]+".color")  0.0 0.0 0.0;
+			break;
+		case 2:
+			int $test_temp1 = `connectionInfo -isDestination ($caShader[$iter]+".eccentricity")`;
+			int $test_temp2 = `connectionInfo -isDestination ($caShader[$iter]+".specularRollOff")`;
+			string $connect_temp;
+			if($test_temp1 && $test_temp2)
+			{
+				$connect_temp = `connectionInfo -sourceFromDestination ($caShader[$iter]+".eccentricity")`;
+				connectAttr $connect_temp ($caShader[$iter]+".colorR");
+				$connect_temp = `connectionInfo -sourceFromDestination ($caShader[$iter]+".specularRollOff")`;
+				connectAttr $connect_temp ($caShader[$iter]+".colorG");
+			}
+			else if(!$test_temp1 && $test_temp2)
+			{
+				float $e_temp = `getAttr ($caShader[$iter]+".eccentricity")`;
+				setAttr ($caShader[$iter]+".colorR")  $e_temp;
+				$connect_temp = `connectionInfo -sourceFromDestination ($caShader[$iter]+".specularRollOff")`;
+				connectAttr $connect_temp ($caShader[$iter]+".colorG");
+			}
+			else if($test_temp1 && !$test_temp2)
+			{
+				float $sro_temp = `getAttr ($caShader[$iter]+".specularRollOff")`;
+				$connect_temp = `connectionInfo -sourceFromDestination ($caShader[$iter]+".eccentricity")`;
+				connectAttr $connect_temp ($caShader[$iter]+".colorR");
+				setAttr ($caShader[$iter]+".colorG")  $sro_temp;
+			}
+			else
+			{
+				float $e_temp = `getAttr ($caShader[$iter]+".eccentricity")`;
+				float $sro_temp = `getAttr ($caShader[$iter]+".specularRollOff")`;
+				setAttr ($caShader[$iter]+".color")  $e_temp $sro_temp 0.0;
+			}
+
+			if($islinkreflectivity[$iter])
+			{
+				connectAttr $sreflectivitycache[$iter] ($caShader[$iter]+".colorB");
+			}
+			else
+			{
+				setAttr ($caShader[$iter]+".colorB") $reflectivitycache[$iter];
+			}
+
+			break;
+		case 3:
+			int $test_temp = `connectionInfo -isDestination ($caShader[$iter]+".cosinePower")`;
+			if($test_temp)
+			{
+				string $temp_node = `shadingNode -asUtility setRange`;
+				setAttr ($temp_node+".minX") 0;
+				setAttr ($temp_node+".maxX") 1;
+				setAttr ($temp_node+".oldMinX") 0;
+				setAttr ($temp_node+".oldMaxX") 100;
+				connectAttr -f $temp_node ($temp_node+".valueX");
+				connectAttr -f ($temp_node+".outValue") ($caShader[$iter]+".color");
+			}
+			else
+			{
+				float $cp_temp = `getAttr ($caShader[$iter]+".cosinePower")`;
+				$cp_temp = $cp_temp/100.0;
+				setAttr ($caShader[$iter]+".color")  $cp_temp 0.0 0.0;
+			}
+
+			if($islinkreflectivity[$iter])
+			{
+				connectAttr $sreflectivitycache[$iter] ($caShader[$iter]+".colorB");
+			}
+			else
+			{
+				setAttr ($caShader[$iter]+".colorB") $reflectivitycache[$iter];
+			}
+
+			break;
+		case 4:
+			setAttr ($caShader[$iter]+".color")  0.0 0.0 0.0;
+			break;
+		case 5:
+			setAttr ($caShader[$iter]+".color")  0.0 0.0 0.0;
+			break;
+		}
+	}
+	string $file = `render -l defaultRenderLayer $CameraName`;
+
+	global int $contador;
+
+	$contador = $contador + 10;
+
+	global string $bakingProgressBar;
+	progressBar -edit -step 140 $bakingProgressBar;
+
+	global string $wsdir;
+	global string $cid[];
+	sysFile -rename ($wsdir + "image/"+$cid[0]+"/"+$CameraName+"/specattr.tga") $file;
+	$file = "image/"+$cid[0]+"/"+$CameraName+"/specattr.tga";
+	setAttr ("ajbake"+$nc+".flsa") -type "string" $file;
+}
+
+global proc shaderspeccolorbake()
+{
+	global string $caLight[];
+	global string $caShader[];
+
+	global int $isviLight[];
+
+	global int $islinkShaderColor[];
+	global float $ColorcacheR[];
+	global float $ColorcacheG[];
+	global float $ColorcacheB[];
+	global string $sColorcache[];
+
+	global int $islinkShaderAmbient[];
+	global float $AmbientcacheR[];
+	global float $AmbientcacheG[];
+	global float $AmbientcacheB[];
+	global string $sAmbientcache[];
+
+	global int $shaderform[];
+
+	global string $prefix;
+
+	global string $CameraName;
+
+	int $nc = `getAttr otherBakeNode.noc`;
+
+	setAttr -type "string" defaultRenderGlobals.imageFilePrefix ("speccolor_"+$prefix+$nc);
+	shaderclear();
+
+	for($iter = 0;$iter < size($caShader);$iter++)
+	{
+		switch($shaderform[$iter])
+		{
+		case 0:
+			setAttr ($caShader[$iter]+".color")  0.0 0.0 0.0;
+			break;
+		case 1:
+			setAttr ($caShader[$iter]+".color")  0.0 0.0 0.0;
+			break;
+		case 2:
+		case 3:
+		case 4:
+		case 5:
+		default:
+			int $test_temp = `connectionInfo -isDestination ($caShader[$iter]+".specularColor")`;
+			string $connect_temp;
+			if($test_temp)
+			{
+				$connect_temp = `connectionInfo -sourceFromDestination ($caShader[$iter]+".specularColor")`;
+				connectAttr $connect_temp ($caShader[$iter]+".color");
+			}
+			else
+			{
+				float $temp_R = `getAttr ($caShader[$iter]+".specularColorR")`;
+				float $temp_G = `getAttr ($caShader[$iter]+".specularColorG")`;
+				float $temp_B = `getAttr ($caShader[$iter]+".specularColorB")`;
+				setAttr ($caShader[$iter]+".color")  $temp_R $temp_G $temp_B;
+			}
+			break;
+		}
+	}
+	string $file = `render -l defaultRenderLayer $CameraName`;
+
+	global int $contador;
+
+	$contador = $contador + 10;
+
+	global string $bakingProgressBar;
+	progressBar -edit -step 160 $bakingProgressBar;
+
+	global string $wsdir;
+	global string $cid[];
+	sysFile -rename ($wsdir + "image/"+$cid[0]+"/"+$CameraName+"/speccolor.tga") $file;
+	$file = "image/"+$cid[0]+"/"+$CameraName+"/speccolor.tga";
+
+	setAttr ("ajbake"+$nc+".flsc") -type "string" $file;
+}
+
+
+global proc shaderfinalgatheringbake()
+{
+	global string $prefix;
+	global string $CameraName;
+	global string $bakeLight;
+	global string $ambLight;
+
+	int $nc = `getAttr otherBakeNode.noc`;
+
+	setAttr -type "string" defaultRenderGlobals.imageFilePrefix ("finalgather_"+$prefix+$nc);
+	shaderclear();
+
+
+	setAttr miRenderGlobals.enableDefaultLight 0;
+	setAttr -type "string" miDefaultOptions.finalGatherFilename "FG.tga";
+	setAttr mentalrayGlobals.renderMode 3;
+	setAttr miDefaultOptions.finalGatherRebuild 0;
+
+	RenderIntoNewWindow;
+}
+global proc saveobj()
+{
+
+	string $gg[] = `ls -type "mesh" -v`;
+	string $getdir = `getAttr otherBakeNode.od`;
+
+    global string $wsdir;
+    $getdir = $wsdir + $getdir;
+
+	select -r $gg;
+	$gg = `duplicate -rr`;
+	Triangulate;
+	select -r $gg;
+    file -op "groups=0;ptgroups=0;materials=0;smoothing=0;normals=0" -typ "OBJexport" -pr -es $getdir;
+
+	print $getdir;
+	delete $gg;
+}
+
+global proc save_cache()
+{
+	global string $file_dir;
+	loadPlugin ($file_dir+"GoRInfo2009x64.mll");
+	saveinfo;
+	eval("unloadPlugin -f (\"GoRInfo2009x64.mll\")");
+}
+
+global proc FG()
+{
+	global string $CameraName;
+    global string $modelPanel;
+
+    modelPanel -edit -camera $CameraName $modelPanel;
+	RenderViewWindow;
+
+    string $subst[] = `ls -geometry`;
+    select $subst;
+	string $myLayer = `createRenderLayer -name "gorilla_finalgather" -number 1 -noRecurse $subst`;
+	editRenderLayerGlobals -currentRenderLayer $myLayer;
+
+	//setAttr "miRenderGlobals.enableDefaultLight" 0;
+	//setAttr mentalrayGlobals.renderMode 3;
+	setAttr miDefaultOptions.finalGather 1;
+
+	//string $currentLights[];
+	//$currentLights = `ls -lights -visible`;
+
+	//hide defaultLightSet;
+	//string $ambLight = `ambientLight -i 0.2`;
+
+	string $bakeLight2;
+	$bakeLight2 = `ambientLight -as 0.0 -rgb 1.0 1.0 1.0 -i 0.1`;
+
+	//sphere -n dome -r 1000000.0 -po 1;
+
+    setFocus $modelPanel;
+
+	RenderIntoNewWindow;
+
+	editRenderLayerGlobals -currentRenderLayer defaultRenderLayer;
+	delete $myLayer;
+
+	//setAttr mentalrayGlobals.renderMode 1;
+	//setAttr miDefaultOptions.finalGatherRebuild 2;
+	//mayaBatchRender;
+
+	//showHidden defaultLightSet;
+	delete (firstParentOf($bakeLight2));
+	//delete $bakeLight;
+	//delete dome;
+	//delete $ambLight;
+
+	global string $wsdir;
+	global string $cid[];
+	global string $renderPanel;
+	renderWindowEditor -edit -writeImage ($wsdir + "image/"+$cid[0]+"/"+$CameraName+"/FG.tga") $renderPanel;
+
+	setAttr miDefaultOptions.finalGather 0;
+
+    warning "Baking final gathering pass needs scene to be reloaded. To start relighting, re-open this scene without closing Go! Rilla plugin.";
+}
+
+
+global proc AO2()
+{
+   	RenderViewWindow;
+    global string $modelPanel;
+	global string $CameraName;
+    modelPanel -edit -camera $CameraName $modelPanel;
+
+	setAttr defaultRenderGlobals.currentRenderer -type "string" "mentalRay";
+	updateRendererUI;
+
+	setAttr miDefaultOptions.finalGather 0;
+
+	string $subst[] = `ls -geometry`;
+    select $subst;
+	string $myLayer = `createRenderLayer -name "gorilla_occlusion" -number 1 -noRecurse $subst`;
+
+	renderLayerBuiltinPreset occlusion $myLayer;
+	editRenderLayerGlobals -currentRenderLayer $myLayer;
+    setAttr "mib_amb_occlusion1.samples" 32;
+	setAttr "mib_amb_occlusion1.spread" 0.75;
+	setAttr "mib_amb_occlusion1.max_distance" 4;
+
+    setFocus $modelPanel;
+
+	RenderIntoNewWindow;
+
+	editRenderLayerGlobals -currentRenderLayer defaultRenderLayer;
+	delete $myLayer;
+
+    global string $wsdir;
+	global string $cid[];
+	global string $renderPanel;
+	renderWindowEditor -edit -writeImage ($wsdir + "image/"+$cid[0]+"/"+$CameraName+"/AO.tga") $renderPanel;
+
+	setAttr miDefaultOptions.finalGather 0;
+
+	delete mib_amb_occlusion1;
+
+	/*
+    RenderViewWindow;
+    global string $CameraName;
+
+    setAttr miDefaultOptions.finalGather 0;
+
+    flushUndo;
+    int $AMOccSa 	= 64;
+    float $AMOccSp 	= 0.75;
+    float $AMOccMa 	= 4.0;
+    shadingNode -asShader surfaceShader -n AMOcclusion;
+    sets -renderable true -noSurfaceShader true -empty -name AMOcclusionSG;
+    connectAttr -f AMOcclusion.outColor AMOcclusionSG.surfaceShader;
+    mrCreateCustomNode -asTexture "" mib_amb_occlusion;
+    connectAttr -force mib_amb_occlusion1.outValue AMOcclusion.outColor;
+    setAttr "mib_amb_occlusion1.samples" $AMOccSa;
+    setAttr "mib_amb_occlusion1.spread" $AMOccSp;
+    setAttr "mib_amb_occlusion1.max_distance"  $AMOccMa;
+
+    string $geometry[] = `ls -g`;
+    select $geometry;
+    pickWalk -d up;
+    sets -e -forceElement AMOcclusionSG;
+    string $camShapes[] = `ls -cameras`;
+    select $camShapes;
+    pickWalk -d up;
+    string $getcam[] = `ls -sl`;
+    for($AMenv in $getcam){
+    setAttr ($AMenv+".backgroundColor") -type double3 1 1 1;}
+
+    string $modelPanels[];
+    string $camname;
+    $modelPanels = `getPanel -type "modelPanel"`;
+
+    int $i;
+    for( $i=0; $i < size($modelPanels); $i = $i + 1 )
+    {
+        $camname = `modelPanel -q -cam $modelPanels[$i]`;
+        if( $camname == $CameraName ) {
+    		setFocus $modelPanels[$i];
+            break;
+    	}
+    }
+
+    renderIntoNewWindow $CameraName;
+    //render $CameraName;
+    global string $wsdir;
+    global string $cid[];
+    global string $renderPanel;
+    renderWindowEditor -edit -writeImage ($wsdir + "image/"+$cid[0]+"/"+$CameraName+"/AO.tga") $renderPanel;
+
+    int $Undo = 0;do{Undo;$Undo=$Undo+1;} while ($Undo < 28);
+
+    if( `objExists AMOcclusion`)delete AMOcclusion;
+    if( `objExists AMOcclusionSG`)delete AMOcclusionSG;
+    if( `objExists mib_amb_occlusion1`)delete mib_amb_occlusion1;
+    */
+}
+
+global proc AO(){
+	undoInfo -state on -infinity on;
+	if(`window -exists MinhAOwin`)deleteUI MinhAOwin;
+	window -t "Ambient Occlusion" -rtf 1 MinhAOwin;
+	columnLayout;
+	rowColumnLayout -nc 2 -cw 1 80 -cw 2 46;
+	text -l" Sample";
+	intField -h 20 -v 32 Sample;
+	text -l" Spread (blur ...)";
+	floatField -min 0 -max 1000 -v 0.75 Spread;
+	text -l" Max Distance";
+	floatField -min 0 -max 1000 -v 1 MaxDis;
+	setParent..;
+	separator;
+	rowColumnLayout -nc 4 -cw 1 2 -cw 2 60 -cw 3 3 -cw 4 60;
+	button -h 20 -vis 0;
+	button -h 20 -l"Render" -c"select -cl;AO2();";
+	button -h 20 -vis 0;
+	button -h 20 -l"Reset" -c"intField -e -v 32 Sample;floatField -e -v 0.75 Spread;floatField -e -v 1 MaxDis;";
+	setParent..;
+	showWindow;
+}
+global proc renderbakeall()
+{
+	global string $CameraName;
+	if( $CameraName == " ") { error("Please select a camera"); return; }
+	global string $prefix;
+	global string $file_dir;
+
+	RenderViewWindow;
+
+	global string $cbIncludeFG;
+	global string $cbIncludeAO;
+	int $FGon = `checkBox -q -v $cbIncludeFG`;
+	int $AOon = `checkBox -q -v $cbIncludeAO`;
+
+	setAttr "defaultRenderQuality.edgeAntiAliasing" 0;
+	setAttr "defaultRenderQuality.shadingSamples" 2;
+    //setAttr "defaultRenderGlobals.clipFinalShadedColor" 0;
+	//setAttr "defaultRenderGlobals.jitterFinalColor" 0;
+
+	shaderinitbake();
+	shaderchannelbake();
+	shaderambientbake();
+	shadediffusebake();
+	shaderspecattrbake();
+	shaderspeccolorbake();
+    shadercolorbake();
+
+    shadernormalbake();
+
+	int $nc = `getAttr otherBakeNode.noc`;
+	setAttr ("ajbake"+$nc+".nc") 0.4;
+	setAttr ("ajbake"+$nc+".fc") 400.0;
+
+	global string $wsdir;
+	global string $cid[];
+	if( $AOon == on )
+	{
+		setAttr ("ajbake"+$nc+".flao") -type "string" ("image/"+$cid[0]+"/"+$CameraName+"/AO.tga");
+	}
+	if( $FGon == on )
+	{
+		setAttr ("ajbake"+$nc+".flfg") -type "string" ("image/"+$cid[0]+"/"+$CameraName+"/FG.tga");
+	}
+
+	shaderreturnbake();
+
+	setAttr -type "string" defaultRenderGlobals.imageFilePrefix ($prefix);
+
+	saveinfo;
+
+	saveobj();
+
+	if( $FGon == on ) FG();
+}
+
+global string $goip;
+global string $goport;
+
+global proc makecam()
+{
+	global string $tempcam[];
+	if(`objExists gorelight`)
+	{
+	}
+	else
+	{
+        $tempcam = `camera -position 0.0 0.0 -999999.0`;
+		rename $tempcam[0] gorelight;
+	}
+}
+
+global string $updateedit;
+global proc view()
+{
+	global string $modelPanel;
+	global string $updateedit;
+	global string $CameraName;
+	modelPanel -edit -camera gorelight $modelPanel;
+
+	global string $file_dir;
+	loadPlugin ($file_dir+"GoRclient2009x64.mll");
+	string $tmpstr = `createNode ajClient`;
+
+	move -r 0 0 -1000000.0;
+	rename $tmpstr renderNode;
+
+
+	string $geos[] = `ls -geometry`;
+	if( attributeExists("miLabel", $geos[0]) == false )
+	{
+		//sag_tagShapes();
+	}
+}
+
+global proc sclear()
+{
+	global string $file_dir;
+    global string $nodeName;
+    global string $tempcam[];
+
+	if(objExists($tempcam[0])) delete $tempcam[0];
+	if(objExists($nodeName)) delete $nodeName;
+	if(objExists("ajclientNode")) delete ajclientNode;
+	if(objExists("renderNode*"))
+    	eval("unloadPlugin -f (\"GoRclient2009x64.mll\")");
+	while(objExists("renderNode*"))
+	{
+		string $rn = `firstParentOf("renderNode*")`;
+		delete $rn;
+	}
+}
+
+global proc cachenodemake()
+{
+	global string $windowName;
+	global string $modelPanel;
+    global string $CameraName;
+	string $temp_name[] = `ls -sl`;
+
+	if(`objExists ajclientNode`)
+	{
+		delete ajclientNode;
+	}
+	global string $nodeName;
+    $nodeName = `createNode "transform" -n "ajclientNode"`;
+	addAttr -ln numoflight -sn nol -dv 0 -at short ajclientNode;
+	addAttr -ln lightName -sn ln -dt stringArray ajclientNode;
+	addAttr -ln cameraName -sn cn -dt "string" ajclientNode;
+	addAttr -ln modelPanelName -sn mn -dt "string" ajclientNode;
+	setAttr ajclientNode.mn -type "string" $modelPanel;
+	setAttr ajclientNode.cn -type "string" $temp_name[0];
+	addAttr -ln select -sn sel -dt "string" ajclientNode;
+	addAttr -ln ipadress -sn ip -dt "string" ajclientNode;
+	addAttr -ln port -sn po -dv 1555 -at long ajclientNode;
+	addAttr -ln lightupdate -sn lu -dv 0 -at short ajclientNode;
+	addAttr -ln linkupdate -sn linkupdated -dv 0 -at short ajclientNode;
+    addAttr -ln windowname -sn wn -dt "string" ajclientNode;
+    setAttr ajclientNode.wn -type "string" $windowName;
+
+    addAttr -ln numobjects -sn noo -dv 0 -at long ajclientNode;
+
+    addAttr -ln resx -sn resx -dv 640 -at long ajclientNode;
+    addAttr -ln resy -sn resy -dv 480 -at long ajclientNode;
+
+    global int $ResX;
+    global int $ResY;
+    setAttr ajclientNode.resx $ResX;
+    setAttr ajclientNode.resy $ResY;
+
+    string $objShapes[] = `ls -type geometryShape`;
+    int $numobj = size($objShapes);
+    setAttr ajclientNode.noo $numobj;
+
+    string $modelPanels[];
+    string $camname;
+    $modelPanels = `getPanel -type "modelPanel"`;
+
+    int $i;
+    for( $i=0; $i < size($modelPanels); $i = $i + 1 )
+    {
+        $camname = `modelPanel -q -cam $modelPanels[$i]`;
+        if( $camname == $CameraName ) {
+    		setAttr ajclientNode.mn -type "string" $modelPanels[$i];
+            break;
+    	}
+    }
+
+}
+
+global proc ipportassign()
+{
+	global string $goip;
+	global string $goport;
+
+	string $ip = `textFieldGrp -q -text $goip`;
+	int $port= `intFieldGrp -q -v1 $goport`;
+
+	setAttr ajclientNode.ip -type "string" $ip;
+	setAttr ajclientNode.po $port;
+}
+
+global proc runrenderer()
+{
+	global string $file_dir;
+	global string $cachefile;
+    global string $cachetext;
+
+	if( `objExists otherBakeNode` )
+	{
+		$cachefile = $cachetext;
+        delete otherBakeNode;
+	}
+    print $cachefile;
+
+	global int $ResX;
+	$ResX = `intField -q -v ResolutionX`;
+	global int $ResY;
+	$ResY = `intField -q -v ResolutionY`;
+
+	system( ("start " + $file_dir + "GoRilla.exe " + $ResX + " " + $ResY + " \"" + $cachefile + "\"") );
+}
+global proc unloadClient()
+{
+	global string $CameraName;
+
+	eval("unloadPlugin -f (\"GoRclient2009x64.mll\")");
+}
+global proc changeCamera()
+{
+	global string $CameraName;
+	global string $SelectedCamera;
+    global string $modelPanel;
+
+	$CameraName = `optionMenu -q -v $SelectedCamera`;
+    modelPanel -edit -camera $CameraName $modelPanel;
+
+    if( objExists("ajclientNode") )
+    	setAttr ("ajclientNode.cn") -type "string" $CameraName;
+}
+global proc ajrender()
+{
+
+	global string $cachetextfield;
+	global string $objtextfield;
+
+	global string $goip;
+	global string $goport;
+
+	global string $updateedit;
+    global string $windowName;
+    global string $modelPanel;
+
+	global int $ResX;
+	global int $ResY;
+
+	if(!`window -exists ajrender`)
+	{
+		$windowName = `window -title "Go! Rilla" -resizeToFitChildren true -mnb false -mxb false ajrender`;
+
+		string $main = `columnLayout -w 245 -h 250`;
+		string $pane = `paneLayout -width 245 -h 8 -parent $main`;
+		string $form = `formLayout -w 245 -h 1 -p $main`;
+		$updateedit = `modelEditor -p $form`;
+
+		$modelPanel = `modelPanel -menuBarVisible false -parent $pane`;
+
+		button -p $main -w 245 -l "&Run Viewer" -c "runrenderer";
+		button -p $main -w 245 -h 50 -l "&Start Preview" -c "unloadClient();cachenodemake();ipportassign();view();";
+		button -p $main -w 245 -l "&Clear All" -c "sclear();";
+
+		setParent..;
+
+		string $res_frm = `frameLayout -w 244 -parent $main -label "Preview Resolution" -labelAlign "bottom" -cll true -cl true -borderStyle "etchedIn"`;
+		string $res_frm_col = `columnLayout -parent $res_frm -cal "center"`;
+		string $res_frm_col2 = `rowColumnLayout -p $res_frm_col  -nc 2 -cw 1 80 -cw 2 80`;
+		text -l" Width:";
+		intField -p $res_frm_col2 -h 20 -v $ResX ResolutionX;
+		text -l" Height:";
+		intField -p $res_frm_col2 -h 20 -v $ResY ResolutionY;
+
+		// Camera
+		string $camera_frm = `frameLayout -w 244 -parent $main -label "Camera" -labelAlign "bottom" -cll true -cl true -borderStyle "etchedIn"`;
+		string $camera_frm_col = `columnLayout -parent $camera_frm -cal "center"`;
+
+		listCameras;
+		string $cameras[] = `listCameras`;
+		global string $SelectedCamera;
+		$SelectedCamera = `optionMenu -width 240 -p $camera_frm_col -itemListLong -cc "changeCamera();" -l " Select Camera"`;
+		menuItem -p $SelectedCamera -l " ";
+		for( $iter = 0; $iter < size($cameras); $iter++ )
+		{
+			menuItem -p $SelectedCamera -l $cameras[$iter];
+		}
+
+		// Baking
+		setParent..;
+		string $a_frm1 = `frameLayout -parent $main -label "Bake Cache" -labelAlign "bottom" -cll true -cl true -borderStyle "etchedIn"`;
+		string $b_frm1_col = `columnLayout -parent $a_frm1 -cal "center"`;
+
+		global string $bakingProgressBar;  // This is defined on maya startup
+		$bakingProgressBar = `progressBar -p $b_frm1_col`;
+		progressBar -edit
+			-isInterruptable true
+			-status "Baking Caches ..."
+			-maxValue 1000
+			-width 240
+			$bakingProgressBar;
+
+		global string $cbIncludeFG;
+		$cbIncludeFG = `checkBox -l"Include Final Gathering Pass" -v false`;
+		global string $cbIncludeAO;
+		$cbIncludeAO = `checkBox -l"Include Ambient Occlusion Pass" -v false`;
+
+		button -p $b_frm1_col -w 240 -l "Bake All" -c "int $AOon = `checkBox -q -v $cbIncludeAO`; if($AOon == on) {AO2();} renderbakeall();";
+
+		// Network
+		setParent..;
+		string $a_frm3 = `frameLayout -parent $main -en true -label "Network" -labelAlign "bottom" -cll true -cl true -borderStyle "etchedIn"`;
+		string $b_frm3_col = `columnLayout -parent $a_frm3 -cal "center"`;
+		$goip = `textFieldGrp -p $b_frm3_col -w 240 -text "127.0.0.1" -columnWidth2 40 200 -l "ip"`;
+		$goport = `intFieldGrp -p $b_frm3_col -w 240 -columnWidth2 40 200 -l "port" -v1 1555`;
+
+		formLayout -edit
+			-attachForm $updateedit "top" 0
+			-attachForm $updateedit "left" 0
+			-attachForm $updateedit "bottom" 0
+			-attachForm $updateedit "right" 0
+			$form;
+
+
+
+		// 동작캐치용 ModelPanel
+		makecam();
+		modelPanel -edit -camera gorelight $modelPanel;
+        modelEditor -edit -camera gorelight $updateedit;
+
+        //$modelPanel2 = `modelPanel -menuBarVisible false`;
+
+
+		// RenderIntoNewWindow를 위한 렌더판넬 지정
+		global string $renderPanel;
+		string $renderPanels[] = `getPanel -scriptType "renderWindowPanel"`;
+		if(size($renderPanels))
+        {
+			$renderPanel = $renderPanels[0];
+		}else{
+			$renderPanel = `scriptedPanel -type "renderWindowPanel" -unParent renderView`;
+			scriptedPanel -e -label "Render View" $renderPanel;
+		}
+	}
+	showWindow ajrender;
+	window -edit -widthHeight 253 250 ajrender;
+}
+
+while(`pluginInfo -q -loaded Mayatomr` == 0)
+{
+	loadPlugin Mayatomr;
+}
+while(!`objExists "mentalrayGlobals"`)
+{
+    updateRendererUI;
+    miCreateDefaultNodes();
+}
+loadPlugin "objExport.mll";
+loadPlugin ($file_dir+"GoRInfo2009x64.mll");
+ajrender();
+setCurrentRenderer mentalRay;
+updateRendererUI;
+setAttr "defaultRenderGlobals.imageFormat" 19;
+setAttr miDefaultOptions.minSamples 0;
+setAttr miDefaultOptions.maxSamples 1;
+setAttr miDefaultOptions.finalGather 0;
+

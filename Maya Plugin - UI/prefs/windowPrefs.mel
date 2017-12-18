@@ -1,0 +1,44 @@
+//Maya Preference 2009 (Release 1)
+//
+//
+windowPref -topLeftCorner 354 1264 -widthHeight 334 474 -parentMain true outlinerPanel1Window;
+windowPref -topLeftCorner 273 80 -widthHeight 1474 805 -parentMain true hyperGraphPanel1Window;
+windowPref -topLeftCorner 250 200 -widthHeight 660 400 -parentMain true graphEditor1Window;
+windowPref -topLeftCorner 250 200 -widthHeight 1141 761 -parentMain true dopeSheetPanel1Window;
+windowPref -topLeftCorner 250 200 -widthHeight 660 400 -parentMain true clipEditorPanel1Window;
+windowPref -topLeftCorner 250 200 -widthHeight 560 430 -parentMain true multiListerPanel1Window;
+windowPref -topLeftCorner 250 200 -widthHeight 524 470 -parentMain true devicePanel1Window;
+windowPref -topLeftCorner 181 327 -widthHeight 1097 781 -parentMain true hyperShadePanel1Window;
+windowPref -topLeftCorner 250 200 -widthHeight 700 400 -parentMain true dynPaintScriptedPanelWindow;
+windowPref -topLeftCorner 250 200 -widthHeight 550 562 -parentMain true blindDataEditor1Window;
+windowPref -topLeftCorner 0 209 -widthHeight 535 880 -parentMain true unifiedRenderGlobalsWindow;
+windowPref -topLeftCorner 411 2209 -widthHeight 486 310 -parentMain true renderViewWindow;
+windowPref -topLeftCorner 894 1390 -widthHeight 530 276 -parentMain true CommandWindow;
+windowPref -topLeftCorner 25 885 -widthHeight 1215 985 -parentMain false MayaWindow;
+windowPref -topLeftCorner 377 2218 -widthHeight 525 323 -parentMain true OptionBoxWindow;
+windowPref -topLeftCorner 557 23 -widthHeight 261 264 -parentMain true ajrender;
+windowPref -topLeftCorner 43 63 -widthHeight 368 595 -parentMain true pluginManagerWindow;
+windowPref -topLeftCorner 250 74 -widthHeight 278 500 -parentMain true ColorEditor;
+windowPref -topLeftCorner 417 1926 -widthHeight 1895 739 -parentMain true scriptEditorPanel1Window;
+windowPref -topLeftCorner 400 640 -widthHeight 432 196 -parentMain true LayerEditorQuickEditWindow;
+windowPref -topLeftCorner 210 390 -widthHeight 630 450 -parentMain true PreferencesWindow;
+windowPref -topLeftCorner 438 593 -widthHeight 941 714 -parentMain true relationshipPanel1Window;
+windowPref -topLeftCorner 114 460 -widthHeight 1358 1050 -parentMain true polyTexturePlacementPanel1Window;
+windowPref -topLeftCorner 359 669 -widthHeight 520 620 -parentMain true connectWindow;
+windowPref -topLeftCorner 330 845 -widthHeight 565 730 -parentMain true createRenderNodeWindow;
+windowPref -topLeftCorner 340 697 -widthHeight 434 570 -parentMain true GirlGuiMain;
+windowPref -topLeftCorner 655 1055 -widthHeight 425 342 -parentMain true window1;
+windowPref -topLeftCorner 400 640 -widthHeight 481 321 -parentMain true mentalrayRenderOptionWnd;
+windowPref -topLeftCorner 400 640 -widthHeight 471 295 -parentMain true interactiveShadingOptionsWin;
+windowPref -topLeftCorner 428 -81 -widthHeight 400 620 -parentMain true ks__nSpaceManager;
+windowPref -topLeftCorner 329 184 -widthHeight 1423 854 -parentMain true hyperGraphPanel11Window;
+windowPref -topLeftCorner 524 -514 -widthHeight 787 506 -parentMain true hyperGraphPanel12Window;
+windowPref -topLeftCorner 131 165 -widthHeight 1432 990 -parentMain true hyperGraphPanel13Window;
+windowPref -topLeftCorner 89 -73 -widthHeight 1053 1050 -parentMain true hyperGraphPanel14Window;
+windowPref -topLeftCorner 205 87 -widthHeight 1680 1026 -parentMain true hyperGraphPanel15Window;
+windowPref -topLeftCorner 235 864 -widthHeight 741 557 -parentMain true hyperGraphPanel2Window;
+windowPref -topLeftCorner 221 278 -widthHeight 1409 1050 -parentMain true hyperGraphPanel16Window;
+windowPref -topLeftCorner 484 829 -widthHeight 556 372 -parentMain true batchRenderWnd;
+windowPref -topLeftCorner 0 0 -widthHeight 475 325 -parentMain true hyperGraphPanel6Window;
+windowPref -topLeftCorner 0 0 -widthHeight 475 325 -parentMain true hyperGraphPanel7Window;
+windowPref -topLeftCorner 0 0 -widthHeight 475 325 -parentMain true hyperGraphPanel8Window;

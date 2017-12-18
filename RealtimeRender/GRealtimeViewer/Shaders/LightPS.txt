@@ -1,0 +1,105 @@
+struct INPUT
+{
+	float2 texc : TEXCOORD0;
+	float4 toFar : TEXCOORD1;
+};
+
+#define SAMPLES 4
+#define LIGHTS 32
+
+uniform float4 camera : register(c0);
+uniform float4 lights[8] : register(c1);
+uniform float4 colors[8] : register(c9);
+
+sampler2D position : register(s0);
+sampler2D color : register(s1);
+sampler2D ambient : register(s2);
+sampler2D bump : register(s3);
+sampler2D speccolor : register(s4);
+sampler2D specattr1 : register(s5);
+sampler2D specattr2 : register(s6);
+sampler2D common1 : register(s7);
+sampler2D common2 : register(s8);
+sampler2D common3 : register(s9);
+sampler2D common4 : register(s10);
+
+float4 main(INPUT data): COLOR0
+{
+	float2 texSh[4];
+	texSh[0] = float2(0.0, 0.0);
+	texSh[1] = float2(0.5/1024.0, 0.0);
+	texSh[2] = float2(0.0, 0.5/768.0);
+	texSh[3] = float2(0.5/1024.0, 0.5/768.0);
+
+	float4 positions[4], normals[4], albedos[4];
+	for(int i = 0; i < 4; i++)
+	{
+		positions[i] = float4((data.toFar.xyz * dot(tex2D(position, data.texc + texSh[i]), float4(1.0, 1.0/256.0, 1.0/(256.0*256.0), 0.0))) + camera.xyz, 1.0);
+		normals[i] = tex2D(normal, data.texc + texSh[i]) * float4(2,2,2,1) - float4(1,1,1,0);
+		albedos[i] = tex2D(albedo, data.texc + texSh[i]);
+	}
+	float4 weights = float4(albedos[0].w, albedos[1].w, albedos[2].w, albedos[3].w);
+	weights /= dot(1.0, weights);
+
+	float3 toLight[4], toLightOrt[4];
+	float3 toCameraOrt[4], toCameraRefl[4];
+	float4 toCamera[4];
+
+	for(i = 0; i < 4; i++)
+	{
+		toLight[i] = lights[0].xyz - positions[i].xyz;
+		toLightOrt[i] = normalize(toLight[i]);
+		
+		toCamera[i].xyz = camera.xyz - positions[i].xyz;
+		toCameraOrt[i] = normalize(toCamera[i].xyz);
+			
+		toCameraRefl[i] = reflect(-toCameraOrt[i], normals[i]);
+		
+		toCamera[i].w = 1.0 / dot(toCamera[i].xyz, toCamera[i].xyz);
+	}
+
+	float4 sum = float4(0,0,0,0);
+	[loop]
+	for(int l = 0; l < 8; l++)
+	{
+		for(i = 0; i < 4; i++)
+		{
+			toLight[i] = lights[l].xyz - positions[i].xyz;
+			toLightOrt[i] = normalize(toLight[i]);
+		}
+		float4 att;
+		att.x = dot(toLight[0], toLight[0]);
+		att.y = dot(toLight[1], toLight[1]);
+		att.z = dot(toLight[2], toLight[2]);
+		att.w = dot(toLight[3], toLight[3]);
+
+		att = saturate(1.0 - (att * lights[l].w));
+
+		float4 diff;
+		diff.x = lerp(saturate(dot(toLightOrt[0], -normals[0].xyz)), saturate(dot(toLightOrt[0], normals[0].xyz)), normals[0].w);//*/saturate(dot(normals[0].xyz, toLightOrt[0]));
+		diff.y = lerp(saturate(dot(toLightOrt[1], -normals[1].xyz)), saturate(dot(toLightOrt[1], normals[1].xyz)), normals[1].w);//*/saturate(dot(normals[1].xyz, toLightOrt[1]));
+		diff.z = lerp(saturate(dot(toLightOrt[2], -normals[2].xyz)), saturate(dot(toLightOrt[2], normals[2].xyz)), normals[2].w);//*/saturate(dot(normals[2].xyz, toLightOrt[2]));
+		diff.w = lerp(saturate(dot(toLightOrt[3], -normals[3].xyz)), saturate(dot(toLightOrt[3], normals[3].xyz)), normals[3].w);//*/saturate(dot(normals[3].xyz, toLightOrt[3]));
+
+		float4 spec;
+		spec.x = saturate(dot(toCameraRefl[0], toLightOrt[0]));
+		spec.y = saturate(dot(toCameraRefl[1], toLightOrt[1]));
+		spec.z = saturate(dot(toCameraRefl[2], toLightOrt[2]));
+		spec.w = saturate(dot(toCameraRefl[3], toLightOrt[3]));
+
+		spec = spec*spec;
+		spec = spec*spec;
+
+		float4 volV = 0.0;
+					
+		float4 diffsum = saturate(att * 0.8 * (diff + spec));
+
+		sum += weights.x * (albedos[0] * diffsum.x + volV.x) * colors[l];
+		sum += weights.y * (albedos[1] * diffsum.y + volV.y) * colors[l];
+		sum += weights.z * (albedos[2] * diffsum.z + volV.z) * colors[l];
+		sum += weights.w * (albedos[3] * diffsum.w + volV.w) * colors[l];
+	}
+
+	return /*float4(1,0,0,0);//*/sum;
+}
+

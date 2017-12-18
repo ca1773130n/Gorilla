@@ -1,0 +1,12 @@
+struct INPUT
+{
+	float2 texc : TEXCOORD0;
+};
+
+float4 col : register(c0);
+
+float4 main(INPUT data): COLOR0
+{
+	return float4(col.xyz, (frac(data.texc.x*1024.0) > 0.5 ? 0.25 : 0.0) + (frac(data.texc.y*768.0) > 0.5 ? 0.5 : 0.0));
+}
+

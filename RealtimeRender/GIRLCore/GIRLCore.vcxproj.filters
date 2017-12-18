@@ -1,0 +1,1593 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\accelerators">
+      <UniqueIdentifier>{67c44371-8af4-45d9-bc78-cd68ff45de6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\pixelsamplers">
+      <UniqueIdentifier>{ec0b9949-3eae-48c1-9447-b262ed9693a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\cameras">
+      <UniqueIdentifier>{27867cc4-e82f-4eae-b11f-865daadd9570}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\core">
+      <UniqueIdentifier>{c221969c-f49e-4911-8fac-79ec501f7156}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\core\geometry">
+      <UniqueIdentifier>{cbacd820-06cf-4e8b-9474-fffb364478e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\core\reflection">
+      <UniqueIdentifier>{4f276ac3-7939-4130-9a28-f9ddb7ff0141}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\core\reflection\bxdf">
+      <UniqueIdentifier>{fe848666-2927-4f71-8b59-ff3f6960d08a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\core\reflection\fresnel">
+      <UniqueIdentifier>{b5f70997-faa5-44fd-a896-913f9f737244}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\core\reflection\microfacetdistribution">
+      <UniqueIdentifier>{e33fe446-5f34-459c-9bff-4d724368c37e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\film">
+      <UniqueIdentifier>{46b34c09-9482-4ba2-a861-c53dfda6ea68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\filters">
+      <UniqueIdentifier>{22ccc498-f23f-4ebd-a613-1a7cb3955711}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\integrators">
+      <UniqueIdentifier>{e183ef52-e7e5-44b5-b22b-e7dcac0cf16b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\lights">
+      <UniqueIdentifier>{0b59fb1d-1daa-4585-a42a-435ce383a224}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\materials">
+      <UniqueIdentifier>{8b014dc3-4cdc-424c-a794-d185ff2ccc19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\volumes">
+      <UniqueIdentifier>{4730f62b-ae54-4b90-bd8b-61d30e98c95f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\viewer">
+      <UniqueIdentifier>{15823493-8ee5-490a-ae51-ac8c6896670a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\tonemaps">
+      <UniqueIdentifier>{f8977647-2c06-4662-a54d-bfa13242e76b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\textures">
+      <UniqueIdentifier>{d2cd6c80-6c7a-404a-9ab3-62f259cda10a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\spds">
+      <UniqueIdentifier>{28a7f657-e4e7-4030-a4d4-38ffe159c1e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\shapes">
+      <UniqueIdentifier>{22076b73-88d7-49a2-887e-9fe3161dc0a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\shapes\plymesh">
+      <UniqueIdentifier>{b87586f4-18fd-44e7-b974-5c6029690fa7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\samplers">
+      <UniqueIdentifier>{bd3de811-a5de-4df9-a576-526122d81d1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\renderer">
+      <UniqueIdentifier>{9f878cdd-2bf4-4bca-b494-7ab323c09bbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files\accelerators">
+      <UniqueIdentifier>{6d0ef9e0-8d55-42b2-89d6-627fcf0843cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\cameras">
+      <UniqueIdentifier>{e8ac88a3-a025-4af8-9f77-0cd9ce59859b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\core">
+      <UniqueIdentifier>{736d7ab6-5c67-406c-b945-645cb9e7a5e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\core\geometry">
+      <UniqueIdentifier>{bb820b82-0964-4b11-beec-6095077feb5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\core\reflection">
+      <UniqueIdentifier>{7438c7de-cae2-4a9a-8325-e6580f68d662}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\core\reflection\bxdf">
+      <UniqueIdentifier>{a32bc7b2-eabe-4850-8f34-16b68a34f8a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\core\reflection\fresnel">
+      <UniqueIdentifier>{b1c5cd57-9e31-4ecb-89c4-fb99998a8110}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\core\reflection\microfacetdistribution">
+      <UniqueIdentifier>{9616424c-826f-4b71-bb59-0471022bf724}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\film">
+      <UniqueIdentifier>{a62cc5e0-719d-4d50-9dcc-26a373d1ef22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\filters">
+      <UniqueIdentifier>{97ec03ec-7d9c-4561-ad49-015d853f817b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\integrators">
+      <UniqueIdentifier>{a480cc7d-7035-4730-a186-1a5f3d47d2ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\lights">
+      <UniqueIdentifier>{9d0963b9-57d7-4313-9c39-f35f2363e1d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\lights\data">
+      <UniqueIdentifier>{708cd632-b6f0-4707-8aa7-143b974d06d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\materials">
+      <UniqueIdentifier>{f00bf555-da49-4e95-bd54-ea38c1222da6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\pixelsamplers">
+      <UniqueIdentifier>{27534b1a-fd56-4a3f-83cf-5142f2aab7ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\renderer">
+      <UniqueIdentifier>{6512eb79-c8e3-4d0e-b581-0b553cd008e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\samplers">
+      <UniqueIdentifier>{9f769a4f-26dc-42ba-bf7d-3a349e6bc464}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\shapes">
+      <UniqueIdentifier>{827ea6db-3b27-46cf-a28e-5f9e95e10600}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\shapes\plymesh">
+      <UniqueIdentifier>{63adf6ee-037b-49f9-879f-f06bda7f26d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\spds">
+      <UniqueIdentifier>{713e4037-34e4-48f1-b6fb-e79dc490d218}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\spds\data">
+      <UniqueIdentifier>{f03d258f-53a7-4b38-b819-62a580149d84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\textures">
+      <UniqueIdentifier>{b9f90b3d-3d5d-429f-8c90-0b8db47598cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\tonemaps">
+      <UniqueIdentifier>{1181cfbc-65ec-4369-9a1e-d95848b5a649}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\viewer">
+      <UniqueIdentifier>{273e8ea9-6912-4c37-956c-3ba45cd92d09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\volumes">
+      <UniqueIdentifier>{45e9d98c-02bf-4921-a5c5-657a1ab8e1df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Parser Files">
+      <UniqueIdentifier>{a55f7cb4-3a53-4a62-afe3-a24bcb179906}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="accelerators\bruteforce.cpp">
+      <Filter>Source Files\accelerators</Filter>
+    </ClCompile>
+    <ClCompile Include="accelerators\bvhaccel.cpp">
+      <Filter>Source Files\accelerators</Filter>
+    </ClCompile>
+    <ClCompile Include="accelerators\grid.cpp">
+      <Filter>Source Files\accelerators</Filter>
+    </ClCompile>
+    <ClCompile Include="accelerators\kdtreecache.cpp">
+      <Filter>Source Files\accelerators</Filter>
+    </ClCompile>
+    <ClCompile Include="accelerators\qbvhaccel.cpp">
+      <Filter>Source Files\accelerators</Filter>
+    </ClCompile>
+    <ClCompile Include="accelerators\tabreckdtree.cpp">
+      <Filter>Source Files\accelerators</Filter>
+    </ClCompile>
+    <ClCompile Include="accelerators\unsafekdtree.cpp">
+      <Filter>Source Files\accelerators</Filter>
+    </ClCompile>
+    <ClCompile Include="pixelsamplers\hilbertpx.cpp">
+      <Filter>Source Files\pixelsamplers</Filter>
+    </ClCompile>
+    <ClCompile Include="pixelsamplers\linear.cpp">
+      <Filter>Source Files\pixelsamplers</Filter>
+    </ClCompile>
+    <ClCompile Include="pixelsamplers\lowdiscrepancypx.cpp">
+      <Filter>Source Files\pixelsamplers</Filter>
+    </ClCompile>
+    <ClCompile Include="pixelsamplers\tilepx.cpp">
+      <Filter>Source Files\pixelsamplers</Filter>
+    </ClCompile>
+    <ClCompile Include="pixelsamplers\vegas.cpp">
+      <Filter>Source Files\pixelsamplers</Filter>
+    </ClCompile>
+    <ClCompile Include="cameras\environment.cpp">
+      <Filter>Source Files\cameras</Filter>
+    </ClCompile>
+    <ClCompile Include="cameras\orthographic.cpp">
+      <Filter>Source Files\cameras</Filter>
+    </ClCompile>
+    <ClCompile Include="cameras\perspective.cpp">
+      <Filter>Source Files\cameras</Filter>
+    </ClCompile>
+    <ClCompile Include="cameras\realistic.cpp">
+      <Filter>Source Files\cameras</Filter>
+    </ClCompile>
+    <ClCompile Include="core\api.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\camera.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\color.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\context.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\dynload.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\exrio.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\film.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\geometry.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\girllex.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\girlparse.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\igiio.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\imagereader.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\light.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\material.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\mc.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\osfunc.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="girlmaterials\ParamConvertor.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\paramset.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\parser.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\photonmap.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\primitive.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\reflection.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\renderfarm.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\sampling.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\scene.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\shape.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\spd.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\spectrum.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\spectrumwavelengths.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\texture.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\timer.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\transport.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\util.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\volume.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\geometry\matrix4x4.cpp">
+      <Filter>Source Files\core\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="core\geometry\quaternion.cpp">
+      <Filter>Source Files\core\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="core\geometry\transform.cpp">
+      <Filter>Source Files\core\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="core\reflection\bxdf.cpp">
+      <Filter>Source Files\core\reflection</Filter>
+    </ClCompile>
+    <ClCompile Include="core\reflection\fresnel.cpp">
+      <Filter>Source Files\core\reflection</Filter>
+    </ClCompile>
+    <ClCompile Include="core\reflection\microfacetdistribution.cpp">
+      <Filter>Source Files\core\reflection</Filter>
+    </ClCompile>
+    <ClCompile Include="core\reflection\bxdf\BlinnBRDF.cpp">
+      <Filter>Source Files\core\reflection\bxdf</Filter>
+    </ClCompile>
+    <ClCompile Include="core\reflection\bxdf\BlinnPhongBxDF.cpp">
+      <Filter>Source Files\core\reflection\bxdf</Filter>
+    </ClCompile>
+    <ClCompile Include="core\reflection\bxdf\cooktorrance.cpp">
+      <Filter>Source Files\core\reflection\bxdf</Filter>
+    </ClCompile>
+    <ClCompile Include="core\reflection\bxdf\erfutil.cpp">
+      <Filter>Source Files\core\reflection\bxdf</Filter>
+    </ClCompile>
+    <ClCompile Include="core\reflection\bxdf\fresnelblend.cpp">
+      <Filter>Source Files\core\reflection\bxdf</Filter>
+    </ClCompile>
+    <ClCompile Include="core\reflection\bxdf\GlossyAshikhminShirley.cpp">
+      <Filter>Source Files\core\reflection\bxdf</Filter>
+    </ClCompile>
+    <ClCompile Include="core\reflection\bxdf\HTSGBRDF.cpp">
+      <Filter>Source Files\core\reflection\bxdf</Filter>
+    </ClCompile>
+    <ClCompile Include="core\reflection\bxdf\lafortune.cpp">
+      <Filter>Source Files\core\reflection\bxdf</Filter>
+    </ClCompile>
+    <ClCompile Include="core\reflection\bxdf\lambertian.cpp">
+      <Filter>Source Files\core\reflection\bxdf</Filter>
+    </ClCompile>
+    <ClCompile Include="girlmaterials\LunaBxDF.cpp">
+      <Filter>Source Files\core\reflection\bxdf</Filter>
+    </ClCompile>
+    <ClCompile Include="core\reflection\bxdf\MerlBxDF.cpp">
+      <Filter>Source Files\core\reflection\bxdf</Filter>
+    </ClCompile>
+    <ClCompile Include="core\reflection\bxdf\MerlBxDFFit.cpp">
+      <Filter>Source Files\core\reflection\bxdf</Filter>
+    </ClCompile>
+    <ClCompile Include="core\reflection\bxdf\microfacet.cpp">
+      <Filter>Source Files\core\reflection\bxdf</Filter>
+    </ClCompile>
+    <ClCompile Include="core\reflection\bxdf\nulltransmission.cpp">
+      <Filter>Source Files\core\reflection\bxdf</Filter>
+    </ClCompile>
+    <ClCompile Include="core\reflection\bxdf\orennayar.cpp">
+      <Filter>Source Files\core\reflection\bxdf</Filter>
+    </ClCompile>
+    <ClCompile Include="core\reflection\bxdf\PbrtBxDF.cpp">
+      <Filter>Source Files\core\reflection\bxdf</Filter>
+    </ClCompile>
+    <ClCompile Include="core\reflection\bxdf\PhongBxDF.cpp">
+      <Filter>Source Files\core\reflection\bxdf</Filter>
+    </ClCompile>
+    <ClCompile Include="core\reflection\bxdf\specularreflection.cpp">
+      <Filter>Source Files\core\reflection\bxdf</Filter>
+    </ClCompile>
+    <ClCompile Include="core\reflection\bxdf\speculartransmission.cpp">
+      <Filter>Source Files\core\reflection\bxdf</Filter>
+    </ClCompile>
+    <ClCompile Include="core\reflection\bxdf\WardBRDF.cpp">
+      <Filter>Source Files\core\reflection\bxdf</Filter>
+    </ClCompile>
+    <ClCompile Include="core\reflection\bxdf\WardDuerBRDF.cpp">
+      <Filter>Source Files\core\reflection\bxdf</Filter>
+    </ClCompile>
+    <ClCompile Include="core\reflection\fresnel\fresnelconductor.cpp">
+      <Filter>Source Files\core\reflection\fresnel</Filter>
+    </ClCompile>
+    <ClCompile Include="core\reflection\fresnel\fresneldielectric.cpp">
+      <Filter>Source Files\core\reflection\fresnel</Filter>
+    </ClCompile>
+    <ClCompile Include="core\reflection\fresnel\fresnelnoop.cpp">
+      <Filter>Source Files\core\reflection\fresnel</Filter>
+    </ClCompile>
+    <ClCompile Include="core\reflection\fresnel\fresnelslick.cpp">
+      <Filter>Source Files\core\reflection\fresnel</Filter>
+    </ClCompile>
+    <ClCompile Include="core\reflection\microfacetdistribution\anisotropic.cpp">
+      <Filter>Source Files\core\reflection\microfacetdistribution</Filter>
+    </ClCompile>
+    <ClCompile Include="core\reflection\microfacetdistribution\beckmann.cpp">
+      <Filter>Source Files\core\reflection\microfacetdistribution</Filter>
+    </ClCompile>
+    <ClCompile Include="core\reflection\microfacetdistribution\blinn.cpp">
+      <Filter>Source Files\core\reflection\microfacetdistribution</Filter>
+    </ClCompile>
+    <ClCompile Include="core\reflection\microfacetdistribution\wardisotropic.cpp">
+      <Filter>Source Files\core\reflection\microfacetdistribution</Filter>
+    </ClCompile>
+    <ClCompile Include="film\fleximage.cpp">
+      <Filter>Source Files\film</Filter>
+    </ClCompile>
+    <ClCompile Include="filters\box.cpp">
+      <Filter>Source Files\filters</Filter>
+    </ClCompile>
+    <ClCompile Include="filters\gaussian.cpp">
+      <Filter>Source Files\filters</Filter>
+    </ClCompile>
+    <ClCompile Include="filters\mitchell.cpp">
+      <Filter>Source Files\filters</Filter>
+    </ClCompile>
+    <ClCompile Include="filters\sinc.cpp">
+      <Filter>Source Files\filters</Filter>
+    </ClCompile>
+    <ClCompile Include="filters\triangle.cpp">
+      <Filter>Source Files\filters</Filter>
+    </ClCompile>
+    <ClCompile Include="integrators\bidirectional.cpp">
+      <Filter>Source Files\integrators</Filter>
+    </ClCompile>
+    <ClCompile Include="integrators\directlighting.cpp">
+      <Filter>Source Files\integrators</Filter>
+    </ClCompile>
+    <ClCompile Include="integrators\distributedpath.cpp">
+      <Filter>Source Files\integrators</Filter>
+    </ClCompile>
+    <ClCompile Include="integrators\emission.cpp">
+      <Filter>Source Files\integrators</Filter>
+    </ClCompile>
+    <ClCompile Include="integrators\exphotonmap.cpp">
+      <Filter>Source Files\integrators</Filter>
+    </ClCompile>
+    <ClCompile Include="integrators\path.cpp">
+      <Filter>Source Files\integrators</Filter>
+    </ClCompile>
+    <ClCompile Include="integrators\single.cpp">
+      <Filter>Source Files\integrators</Filter>
+    </ClCompile>
+    <ClCompile Include="lights\area.cpp">
+      <Filter>Source Files\lights</Filter>
+    </ClCompile>
+    <ClCompile Include="lights\distant.cpp">
+      <Filter>Source Files\lights</Filter>
+    </ClCompile>
+    <ClCompile Include="lights\goniometric.cpp">
+      <Filter>Source Files\lights</Filter>
+    </ClCompile>
+    <ClCompile Include="lights\infinite.cpp">
+      <Filter>Source Files\lights</Filter>
+    </ClCompile>
+    <ClCompile Include="lights\infinitesample.cpp">
+      <Filter>Source Files\lights</Filter>
+    </ClCompile>
+    <ClCompile Include="lights\point.cpp">
+      <Filter>Source Files\lights</Filter>
+    </ClCompile>
+    <ClCompile Include="lights\projection.cpp">
+      <Filter>Source Files\lights</Filter>
+    </ClCompile>
+    <ClCompile Include="lights\sky.cpp">
+      <Filter>Source Files\lights</Filter>
+    </ClCompile>
+    <ClCompile Include="lights\spot.cpp">
+      <Filter>Source Files\lights</Filter>
+    </ClCompile>
+    <ClCompile Include="lights\sun.cpp">
+      <Filter>Source Files\lights</Filter>
+    </ClCompile>
+    <ClCompile Include="materials\AshikhminShirley.cpp">
+      <Filter>Source Files\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="materials\BlinnPhong.cpp">
+      <Filter>Source Files\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="materials\carpaint.cpp">
+      <Filter>Source Files\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="materials\GIRLBlinn.cpp">
+      <Filter>Source Files\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="materials\GIRLLambert.cpp">
+      <Filter>Source Files\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="materials\GIRLMaterial.cpp">
+      <Filter>Source Files\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="materials\GIRLPhong.cpp">
+      <Filter>Source Files\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="materials\glass.cpp">
+      <Filter>Source Files\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="materials\glossy.cpp">
+      <Filter>Source Files\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="materials\He.cpp">
+      <Filter>Source Files\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="girlmaterials\LunaGirlMaterial.cpp">
+      <Filter>Source Files\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="girlmaterials\LunaShaderFactory.cpp">
+      <Filter>Source Files\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="materials\matte.cpp">
+      <Filter>Source Files\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="materials\mattetranslucent.cpp">
+      <Filter>Source Files\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="materials\MerlAshikhminShirley.cpp">
+      <Filter>Source Files\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="materials\MerlBlinnPhong.cpp">
+      <Filter>Source Files\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="materials\MerlBRDF.cpp">
+      <Filter>Source Files\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="materials\MerlBRDFFit.cpp">
+      <Filter>Source Files\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="materials\MerlCookTorrance.cpp">
+      <Filter>Source Files\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="materials\MerlHe.cpp">
+      <Filter>Source Files\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="materials\MerlLafortune.cpp">
+      <Filter>Source Files\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="materials\MerlWard.cpp">
+      <Filter>Source Files\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="materials\MerlWardDuer.cpp">
+      <Filter>Source Files\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="materials\metal.cpp">
+      <Filter>Source Files\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="materials\mirror.cpp">
+      <Filter>Source Files\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="materials\mixmaterial.cpp">
+      <Filter>Source Files\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="materials\null.cpp">
+      <Filter>Source Files\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="materials\PbrtBRDF.cpp">
+      <Filter>Source Files\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="materials\roughglass.cpp">
+      <Filter>Source Files\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="materials\shinymetal.cpp">
+      <Filter>Source Files\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="materials\Ward.cpp">
+      <Filter>Source Files\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="volumes\exponential.cpp">
+      <Filter>Source Files\volumes</Filter>
+    </ClCompile>
+    <ClCompile Include="volumes\homogeneous.cpp">
+      <Filter>Source Files\volumes</Filter>
+    </ClCompile>
+    <ClCompile Include="volumes\volumegrid.cpp">
+      <Filter>Source Files\volumes</Filter>
+    </ClCompile>
+    <ClCompile Include="gui_src\GIRLView.cpp">
+      <Filter>Source Files\viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="gui_src\GIRLViewDoc.cpp">
+      <Filter>Source Files\viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="gui_src\GIRLViewView.cpp">
+      <Filter>Source Files\viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="gui_src\HistoryBar.cpp">
+      <Filter>Source Files\viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="gui_src\MainFrm.cpp">
+      <Filter>Source Files\viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="gui_src\PreviewBar.cpp">
+      <Filter>Source Files\viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="tonemaps\contrast.cpp">
+      <Filter>Source Files\tonemaps</Filter>
+    </ClCompile>
+    <ClCompile Include="tonemaps\highcontrast.cpp">
+      <Filter>Source Files\tonemaps</Filter>
+    </ClCompile>
+    <ClCompile Include="tonemaps\maxwhite.cpp">
+      <Filter>Source Files\tonemaps</Filter>
+    </ClCompile>
+    <ClCompile Include="tonemaps\nonlinear.cpp">
+      <Filter>Source Files\tonemaps</Filter>
+    </ClCompile>
+    <ClCompile Include="tonemaps\reinhard.cpp">
+      <Filter>Source Files\tonemaps</Filter>
+    </ClCompile>
+    <ClCompile Include="textures\bilerp.cpp">
+      <Filter>Source Files\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="textures\blackbody.cpp">
+      <Filter>Source Files\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="textures\blender_blend.cpp">
+      <Filter>Source Files\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="textures\blender_clouds.cpp">
+      <Filter>Source Files\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="textures\blender_distortednoise.cpp">
+      <Filter>Source Files\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="textures\blender_magic.cpp">
+      <Filter>Source Files\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="textures\blender_marble.cpp">
+      <Filter>Source Files\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="textures\blender_musgrave.cpp">
+      <Filter>Source Files\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="textures\blender_noise.cpp">
+      <Filter>Source Files\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="textures\blender_noiselib.cpp">
+      <Filter>Source Files\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="textures\blender_stucci.cpp">
+      <Filter>Source Files\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="textures\blender_texlib.cpp">
+      <Filter>Source Files\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="textures\blender_voronoi.cpp">
+      <Filter>Source Files\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="textures\blender_wood.cpp">
+      <Filter>Source Files\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="textures\checkerboard.cpp">
+      <Filter>Source Files\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="textures\constant.cpp">
+      <Filter>Source Files\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="textures\dots.cpp">
+      <Filter>Source Files\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="textures\equalenergy.cpp">
+      <Filter>Source Files\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="textures\fbm.cpp">
+      <Filter>Source Files\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="textures\frequency.cpp">
+      <Filter>Source Files\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="textures\gaussian.cpp">
+      <Filter>Source Files\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="textures\harlequin.cpp">
+      <Filter>Source Files\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="textures\imagemap.cpp">
+      <Filter>Source Files\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="textures\irregulardata.cpp">
+      <Filter>Source Files\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="textures\marble.cpp">
+      <Filter>Source Files\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="textures\mix.cpp">
+      <Filter>Source Files\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="textures\regulardata.cpp">
+      <Filter>Source Files\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="textures\scale.cpp">
+      <Filter>Source Files\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="textures\uv.cpp">
+      <Filter>Source Files\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="textures\windy.cpp">
+      <Filter>Source Files\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="textures\wrinkled.cpp">
+      <Filter>Source Files\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="spds\blackbodyspd.cpp">
+      <Filter>Source Files\spds</Filter>
+    </ClCompile>
+    <ClCompile Include="spds\equalspd.cpp">
+      <Filter>Source Files\spds</Filter>
+    </ClCompile>
+    <ClCompile Include="spds\frequencyspd.cpp">
+      <Filter>Source Files\spds</Filter>
+    </ClCompile>
+    <ClCompile Include="spds\gaussianspd.cpp">
+      <Filter>Source Files\spds</Filter>
+    </ClCompile>
+    <ClCompile Include="spds\irregular.cpp">
+      <Filter>Source Files\spds</Filter>
+    </ClCompile>
+    <ClCompile Include="spds\regular.cpp">
+      <Filter>Source Files\spds</Filter>
+    </ClCompile>
+    <ClCompile Include="spds\rgbillum.cpp">
+      <Filter>Source Files\spds</Filter>
+    </ClCompile>
+    <ClCompile Include="spds\rgbrefl.cpp">
+      <Filter>Source Files\spds</Filter>
+    </ClCompile>
+    <ClCompile Include="shapes\barytrianglemesh.cpp">
+      <Filter>Source Files\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="shapes\cone.cpp">
+      <Filter>Source Files\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="shapes\cylinder.cpp">
+      <Filter>Source Files\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="shapes\disk.cpp">
+      <Filter>Source Files\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="shapes\heightfield.cpp">
+      <Filter>Source Files\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="shapes\hyperboloid.cpp">
+      <Filter>Source Files\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="shapes\lenscomponent.cpp">
+      <Filter>Source Files\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="shapes\loopsubdiv.cpp">
+      <Filter>Source Files\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="shapes\mesh.cpp">
+      <Filter>Source Files\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="shapes\meshbarytriangle.cpp">
+      <Filter>Source Files\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="shapes\meshquadrilateral.cpp">
+      <Filter>Source Files\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="shapes\meshwaldtriangle.cpp">
+      <Filter>Source Files\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="shapes\nurbs.cpp">
+      <Filter>Source Files\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="shapes\paraboloid.cpp">
+      <Filter>Source Files\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="shapes\plymesh.cpp">
+      <Filter>Source Files\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="shapes\quad.cpp">
+      <Filter>Source Files\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="shapes\quadrilateral.cpp">
+      <Filter>Source Files\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="shapes\sphere.cpp">
+      <Filter>Source Files\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="shapes\torus.cpp">
+      <Filter>Source Files\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="shapes\waldtrianglemesh.cpp">
+      <Filter>Source Files\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="shapes\plymesh\rply.c">
+      <Filter>Source Files\shapes\plymesh</Filter>
+    </ClCompile>
+    <ClCompile Include="samplers\erpt.cpp">
+      <Filter>Source Files\samplers</Filter>
+    </ClCompile>
+    <ClCompile Include="samplers\lowdiscrepancy.cpp">
+      <Filter>Source Files\samplers</Filter>
+    </ClCompile>
+    <ClCompile Include="samplers\metrosampler.cpp">
+      <Filter>Source Files\samplers</Filter>
+    </ClCompile>
+    <ClCompile Include="samplers\random.cpp">
+      <Filter>Source Files\samplers</Filter>
+    </ClCompile>
+    <ClCompile Include="renderer\renderserver.cpp">
+      <Filter>Source Files\renderer</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="accelerators\bruteforce.h">
+      <Filter>Header Files\accelerators</Filter>
+    </ClInclude>
+    <ClInclude Include="accelerators\bvhaccel.h">
+      <Filter>Header Files\accelerators</Filter>
+    </ClInclude>
+    <ClInclude Include="accelerators\grid.h">
+      <Filter>Header Files\accelerators</Filter>
+    </ClInclude>
+    <ClInclude Include="accelerators\kdtreecache.h">
+      <Filter>Header Files\accelerators</Filter>
+    </ClInclude>
+    <ClInclude Include="accelerators\qbvhaccel.h">
+      <Filter>Header Files\accelerators</Filter>
+    </ClInclude>
+    <ClInclude Include="accelerators\tabreckdtreeaccel.h">
+      <Filter>Header Files\accelerators</Filter>
+    </ClInclude>
+    <ClInclude Include="accelerators\unsafekdtreeaccel.h">
+      <Filter>Header Files\accelerators</Filter>
+    </ClInclude>
+    <ClInclude Include="cameras\environment.h">
+      <Filter>Header Files\cameras</Filter>
+    </ClInclude>
+    <ClInclude Include="cameras\orthographic.h">
+      <Filter>Header Files\cameras</Filter>
+    </ClInclude>
+    <ClInclude Include="cameras\perspective.h">
+      <Filter>Header Files\cameras</Filter>
+    </ClInclude>
+    <ClInclude Include="cameras\realistic.h">
+      <Filter>Header Files\cameras</Filter>
+    </ClInclude>
+    <ClInclude Include="core\api.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\camera.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\cimg.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\color.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\context.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\contribution.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\dynload.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\error.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\exrio.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\film.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\filter.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\geometry.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\girl.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\igiio.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\imagereader.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\kdtree.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\light.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\material.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\mc.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\memory.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\mipmap.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\motionsystem.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\octree.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\osfunc.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="girlmaterials\ParamConvertor.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\paramset.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\photonmap.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\primitive.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\randomgen.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\reflection.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\renderfarm.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\sampling.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\scene.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\shape.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\spd.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\spectrum.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\spectrumwavelengths.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\stats.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\texture.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\texturecolor.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\timer.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\tonemap.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\transport.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\volume.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\geometry\bbox.h">
+      <Filter>Header Files\core\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="core\geometry\matrix4x4-sse.h">
+      <Filter>Header Files\core\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="core\geometry\matrix4x4.h">
+      <Filter>Header Files\core\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="core\geometry\normal.h">
+      <Filter>Header Files\core\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="core\geometry\point.h">
+      <Filter>Header Files\core\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="core\geometry\quaternion.h">
+      <Filter>Header Files\core\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="core\geometry\ray.h">
+      <Filter>Header Files\core\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="core\geometry\raydifferential.h">
+      <Filter>Header Files\core\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="core\geometry\transform.h">
+      <Filter>Header Files\core\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="core\geometry\vector.h">
+      <Filter>Header Files\core\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="core\reflection\bxdf.h">
+      <Filter>Header Files\core\reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="core\reflection\fresnel.h">
+      <Filter>Header Files\core\reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="core\reflection\microfacetdistribution.h">
+      <Filter>Header Files\core\reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="core\reflection\bxdf\BlinnBRDF.h">
+      <Filter>Header Files\core\reflection\bxdf</Filter>
+    </ClInclude>
+    <ClInclude Include="core\reflection\bxdf\BlinnPhongBxDF.h">
+      <Filter>Header Files\core\reflection\bxdf</Filter>
+    </ClInclude>
+    <ClInclude Include="core\reflection\bxdf\cooktorrance.h">
+      <Filter>Header Files\core\reflection\bxdf</Filter>
+    </ClInclude>
+    <ClInclude Include="core\reflection\bxdf\fresnelblend.h">
+      <Filter>Header Files\core\reflection\bxdf</Filter>
+    </ClInclude>
+    <ClInclude Include="core\reflection\bxdf\fresnelterm.h">
+      <Filter>Header Files\core\reflection\bxdf</Filter>
+    </ClInclude>
+    <ClInclude Include="girlmaterials\girlmaterials.h">
+      <Filter>Header Files\core\reflection\bxdf</Filter>
+    </ClInclude>
+    <ClInclude Include="core\reflection\bxdf\GlossyAshikhminShirley.h">
+      <Filter>Header Files\core\reflection\bxdf</Filter>
+    </ClInclude>
+    <ClInclude Include="core\reflection\bxdf\HTSGBRDF.h">
+      <Filter>Header Files\core\reflection\bxdf</Filter>
+    </ClInclude>
+    <ClInclude Include="core\reflection\bxdf\lafortune.h">
+      <Filter>Header Files\core\reflection\bxdf</Filter>
+    </ClInclude>
+    <ClInclude Include="core\reflection\bxdf\lambertian.h">
+      <Filter>Header Files\core\reflection\bxdf</Filter>
+    </ClInclude>
+    <ClInclude Include="girlmaterials\LunaBxDF.h">
+      <Filter>Header Files\core\reflection\bxdf</Filter>
+    </ClInclude>
+    <ClInclude Include="core\reflection\bxdf\merlbxdf.h">
+      <Filter>Header Files\core\reflection\bxdf</Filter>
+    </ClInclude>
+    <ClInclude Include="core\reflection\bxdf\MerlBxDFFit.h">
+      <Filter>Header Files\core\reflection\bxdf</Filter>
+    </ClInclude>
+    <ClInclude Include="core\reflection\bxdf\microfacet.h">
+      <Filter>Header Files\core\reflection\bxdf</Filter>
+    </ClInclude>
+    <ClInclude Include="core\reflection\bxdf\mycomplex.h">
+      <Filter>Header Files\core\reflection\bxdf</Filter>
+    </ClInclude>
+    <ClInclude Include="core\reflection\bxdf\nulltransmission.h">
+      <Filter>Header Files\core\reflection\bxdf</Filter>
+    </ClInclude>
+    <ClInclude Include="core\reflection\bxdf\orennayar.h">
+      <Filter>Header Files\core\reflection\bxdf</Filter>
+    </ClInclude>
+    <ClInclude Include="core\reflection\bxdf\PbrtBxDF.h">
+      <Filter>Header Files\core\reflection\bxdf</Filter>
+    </ClInclude>
+    <ClInclude Include="core\reflection\bxdf\PhongBxDF.h">
+      <Filter>Header Files\core\reflection\bxdf</Filter>
+    </ClInclude>
+    <ClInclude Include="core\reflection\bxdf\specularreflection.h">
+      <Filter>Header Files\core\reflection\bxdf</Filter>
+    </ClInclude>
+    <ClInclude Include="core\reflection\bxdf\speculartransmission.h">
+      <Filter>Header Files\core\reflection\bxdf</Filter>
+    </ClInclude>
+    <ClInclude Include="core\reflection\bxdf\util.h">
+      <Filter>Header Files\core\reflection\bxdf</Filter>
+    </ClInclude>
+    <ClInclude Include="core\reflection\bxdf\WardBRDF.h">
+      <Filter>Header Files\core\reflection\bxdf</Filter>
+    </ClInclude>
+    <ClInclude Include="core\reflection\bxdf\WardDuerBRDF.h">
+      <Filter>Header Files\core\reflection\bxdf</Filter>
+    </ClInclude>
+    <ClInclude Include="core\reflection\fresnel\fresnelconductor.h">
+      <Filter>Header Files\core\reflection\fresnel</Filter>
+    </ClInclude>
+    <ClInclude Include="core\reflection\fresnel\fresneldielectric.h">
+      <Filter>Header Files\core\reflection\fresnel</Filter>
+    </ClInclude>
+    <ClInclude Include="core\reflection\fresnel\fresnelnoop.h">
+      <Filter>Header Files\core\reflection\fresnel</Filter>
+    </ClInclude>
+    <ClInclude Include="core\reflection\fresnel\fresnelslick.h">
+      <Filter>Header Files\core\reflection\fresnel</Filter>
+    </ClInclude>
+    <ClInclude Include="core\reflection\microfacetdistribution\anisotropic.h">
+      <Filter>Header Files\core\reflection\microfacetdistribution</Filter>
+    </ClInclude>
+    <ClInclude Include="core\reflection\microfacetdistribution\beckmann.h">
+      <Filter>Header Files\core\reflection\microfacetdistribution</Filter>
+    </ClInclude>
+    <ClInclude Include="core\reflection\microfacetdistribution\blinn.h">
+      <Filter>Header Files\core\reflection\microfacetdistribution</Filter>
+    </ClInclude>
+    <ClInclude Include="core\reflection\microfacetdistribution\wardisotropic.h">
+      <Filter>Header Files\core\reflection\microfacetdistribution</Filter>
+    </ClInclude>
+    <ClInclude Include="film\fleximage.h">
+      <Filter>Header Files\film</Filter>
+    </ClInclude>
+    <ClInclude Include="filters\box.h">
+      <Filter>Header Files\filters</Filter>
+    </ClInclude>
+    <ClInclude Include="filters\gaussian.h">
+      <Filter>Header Files\filters</Filter>
+    </ClInclude>
+    <ClInclude Include="filters\mitchell.h">
+      <Filter>Header Files\filters</Filter>
+    </ClInclude>
+    <ClInclude Include="filters\sinc.h">
+      <Filter>Header Files\filters</Filter>
+    </ClInclude>
+    <ClInclude Include="filters\triangle.h">
+      <Filter>Header Files\filters</Filter>
+    </ClInclude>
+    <ClInclude Include="integrators\bidirectional.h">
+      <Filter>Header Files\integrators</Filter>
+    </ClInclude>
+    <ClInclude Include="integrators\directlighting.h">
+      <Filter>Header Files\integrators</Filter>
+    </ClInclude>
+    <ClInclude Include="integrators\distributedpath.h">
+      <Filter>Header Files\integrators</Filter>
+    </ClInclude>
+    <ClInclude Include="integrators\emission.h">
+      <Filter>Header Files\integrators</Filter>
+    </ClInclude>
+    <ClInclude Include="integrators\exphotonmap.h">
+      <Filter>Header Files\integrators</Filter>
+    </ClInclude>
+    <ClInclude Include="integrators\path.h">
+      <Filter>Header Files\integrators</Filter>
+    </ClInclude>
+    <ClInclude Include="integrators\single.h">
+      <Filter>Header Files\integrators</Filter>
+    </ClInclude>
+    <ClInclude Include="lights\distant.h">
+      <Filter>Header Files\lights</Filter>
+    </ClInclude>
+    <ClInclude Include="lights\goniometric.h">
+      <Filter>Header Files\lights</Filter>
+    </ClInclude>
+    <ClInclude Include="lights\infinite.h">
+      <Filter>Header Files\lights</Filter>
+    </ClInclude>
+    <ClInclude Include="lights\infinitesample.h">
+      <Filter>Header Files\lights</Filter>
+    </ClInclude>
+    <ClInclude Include="lights\point.h">
+      <Filter>Header Files\lights</Filter>
+    </ClInclude>
+    <ClInclude Include="lights\projection.h">
+      <Filter>Header Files\lights</Filter>
+    </ClInclude>
+    <ClInclude Include="lights\sky.h">
+      <Filter>Header Files\lights</Filter>
+    </ClInclude>
+    <ClInclude Include="lights\spot.h">
+      <Filter>Header Files\lights</Filter>
+    </ClInclude>
+    <ClInclude Include="lights\sun.h">
+      <Filter>Header Files\lights</Filter>
+    </ClInclude>
+    <ClInclude Include="lights\data\skychroma_spect.h">
+      <Filter>Header Files\lights\data</Filter>
+    </ClInclude>
+    <ClInclude Include="lights\data\sun_spect.h">
+      <Filter>Header Files\lights\data</Filter>
+    </ClInclude>
+    <ClInclude Include="materials\AshikhminShirley.h">
+      <Filter>Header Files\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="materials\BlinnPhong.h">
+      <Filter>Header Files\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="materials\carpaint.h">
+      <Filter>Header Files\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="materials\GIRLBlinn.h">
+      <Filter>Header Files\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="materials\GIRLLambert.h">
+      <Filter>Header Files\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="materials\GIRLMaterial.h">
+      <Filter>Header Files\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="materials\GIRLPhong.h">
+      <Filter>Header Files\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="materials\glass.h">
+      <Filter>Header Files\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="materials\glossy.h">
+      <Filter>Header Files\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="materials\He.h">
+      <Filter>Header Files\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="girlmaterials\LunaGirlMaterial.h">
+      <Filter>Header Files\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="girlmaterials\LunaShaderFactory.h">
+      <Filter>Header Files\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="materials\matte.h">
+      <Filter>Header Files\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="materials\mattetranslucent.h">
+      <Filter>Header Files\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="materials\MerlAshikhminShirley.h">
+      <Filter>Header Files\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="materials\MerlBlinnPhong.h">
+      <Filter>Header Files\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="materials\MerlBRDF.h">
+      <Filter>Header Files\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="materials\MerlBRDFFit.h">
+      <Filter>Header Files\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="materials\MerlCookTorrance.h">
+      <Filter>Header Files\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="materials\MerlHe.h">
+      <Filter>Header Files\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="materials\MerlLafortune.h">
+      <Filter>Header Files\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="materials\MerlWard.h">
+      <Filter>Header Files\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="materials\MerlWardDuer.h">
+      <Filter>Header Files\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="materials\metal.h">
+      <Filter>Header Files\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="materials\mirror.h">
+      <Filter>Header Files\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="materials\mixmaterial.h">
+      <Filter>Header Files\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="materials\null.h">
+      <Filter>Header Files\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="materials\PbrtBRDF.h">
+      <Filter>Header Files\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="materials\roughglass.h">
+      <Filter>Header Files\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="materials\shinymetal.h">
+      <Filter>Header Files\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="materials\Ward.h">
+      <Filter>Header Files\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="pixelsamplers\hilbertpx.h">
+      <Filter>Header Files\pixelsamplers</Filter>
+    </ClInclude>
+    <ClInclude Include="pixelsamplers\linear.h">
+      <Filter>Header Files\pixelsamplers</Filter>
+    </ClInclude>
+    <ClInclude Include="pixelsamplers\lowdiscrepancypx.h">
+      <Filter>Header Files\pixelsamplers</Filter>
+    </ClInclude>
+    <ClInclude Include="pixelsamplers\tilepx.h">
+      <Filter>Header Files\pixelsamplers</Filter>
+    </ClInclude>
+    <ClInclude Include="pixelsamplers\vegas.h">
+      <Filter>Header Files\pixelsamplers</Filter>
+    </ClInclude>
+    <ClInclude Include="renderer\renderserver.h">
+      <Filter>Header Files\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="samplers\erpt.h">
+      <Filter>Header Files\samplers</Filter>
+    </ClInclude>
+    <ClInclude Include="samplers\lowdiscrepancy.h">
+      <Filter>Header Files\samplers</Filter>
+    </ClInclude>
+    <ClInclude Include="samplers\metrosampler.h">
+      <Filter>Header Files\samplers</Filter>
+    </ClInclude>
+    <ClInclude Include="samplers\random.h">
+      <Filter>Header Files\samplers</Filter>
+    </ClInclude>
+    <ClInclude Include="shapes\barytrianglemesh.h">
+      <Filter>Header Files\shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="shapes\cone.h">
+      <Filter>Header Files\shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="shapes\cylinder.h">
+      <Filter>Header Files\shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="shapes\disk.h">
+      <Filter>Header Files\shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="shapes\heightfield.h">
+      <Filter>Header Files\shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="shapes\hyperboloid.h">
+      <Filter>Header Files\shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="shapes\lenscomponent.h">
+      <Filter>Header Files\shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="shapes\loopsubdiv.h">
+      <Filter>Header Files\shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="shapes\mesh.h">
+      <Filter>Header Files\shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="shapes\nurbs.h">
+      <Filter>Header Files\shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="shapes\paraboloid.h">
+      <Filter>Header Files\shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="shapes\plymesh.h">
+      <Filter>Header Files\shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="shapes\quad.h">
+      <Filter>Header Files\shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="shapes\quadrilateral.h">
+      <Filter>Header Files\shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="shapes\sphere.h">
+      <Filter>Header Files\shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="shapes\torus.h">
+      <Filter>Header Files\shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="shapes\waldtrianglemesh.h">
+      <Filter>Header Files\shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="shapes\plymesh\rply.h">
+      <Filter>Header Files\shapes\plymesh</Filter>
+    </ClInclude>
+    <ClInclude Include="spds\blackbodyspd.h">
+      <Filter>Header Files\spds</Filter>
+    </ClInclude>
+    <ClInclude Include="spds\equalspd.h">
+      <Filter>Header Files\spds</Filter>
+    </ClInclude>
+    <ClInclude Include="spds\frequencyspd.h">
+      <Filter>Header Files\spds</Filter>
+    </ClInclude>
+    <ClInclude Include="spds\gaussianspd.h">
+      <Filter>Header Files\spds</Filter>
+    </ClInclude>
+    <ClInclude Include="spds\irregular.h">
+      <Filter>Header Files\spds</Filter>
+    </ClInclude>
+    <ClInclude Include="spds\regular.h">
+      <Filter>Header Files\spds</Filter>
+    </ClInclude>
+    <ClInclude Include="spds\rgbillum.h">
+      <Filter>Header Files\spds</Filter>
+    </ClInclude>
+    <ClInclude Include="spds\rgbrefl.h">
+      <Filter>Header Files\spds</Filter>
+    </ClInclude>
+    <ClInclude Include="spds\data\rgbD65_32.h">
+      <Filter>Header Files\spds\data</Filter>
+    </ClInclude>
+    <ClInclude Include="spds\data\rgbE_32.h">
+      <Filter>Header Files\spds\data</Filter>
+    </ClInclude>
+    <ClInclude Include="spds\data\xyzbasis.h">
+      <Filter>Header Files\spds\data</Filter>
+    </ClInclude>
+    <ClInclude Include="textures\bilerp.h">
+      <Filter>Header Files\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="textures\blackbody.h">
+      <Filter>Header Files\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="textures\blender_blend.h">
+      <Filter>Header Files\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="textures\blender_clouds.h">
+      <Filter>Header Files\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="textures\blender_distortednoise.h">
+      <Filter>Header Files\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="textures\blender_magic.h">
+      <Filter>Header Files\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="textures\blender_marble.h">
+      <Filter>Header Files\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="textures\blender_musgrave.h">
+      <Filter>Header Files\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="textures\blender_noise.h">
+      <Filter>Header Files\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="textures\blender_noiselib.h">
+      <Filter>Header Files\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="textures\blender_stucci.h">
+      <Filter>Header Files\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="textures\blender_texlib.h">
+      <Filter>Header Files\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="textures\blender_voronoi.h">
+      <Filter>Header Files\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="textures\blender_wood.h">
+      <Filter>Header Files\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="textures\checkerboard.h">
+      <Filter>Header Files\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="textures\constant.h">
+      <Filter>Header Files\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="textures\dots.h">
+      <Filter>Header Files\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="textures\equalenergy.h">
+      <Filter>Header Files\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="textures\fbm.h">
+      <Filter>Header Files\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="textures\frequency.h">
+      <Filter>Header Files\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="textures\gaussian.h">
+      <Filter>Header Files\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="textures\harlequin.h">
+      <Filter>Header Files\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="textures\imagemap.h">
+      <Filter>Header Files\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="textures\irregulardata.h">
+      <Filter>Header Files\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="textures\marble.h">
+      <Filter>Header Files\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="textures\mix.h">
+      <Filter>Header Files\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="textures\regulardata.h">
+      <Filter>Header Files\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="textures\scale.h">
+      <Filter>Header Files\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="textures\uv.h">
+      <Filter>Header Files\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="textures\windy.h">
+      <Filter>Header Files\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="textures\wrinkled.h">
+      <Filter>Header Files\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="tonemaps\contrast.h">
+      <Filter>Header Files\tonemaps</Filter>
+    </ClInclude>
+    <ClInclude Include="tonemaps\highcontrast.h">
+      <Filter>Header Files\tonemaps</Filter>
+    </ClInclude>
+    <ClInclude Include="tonemaps\maxwhite.h">
+      <Filter>Header Files\tonemaps</Filter>
+    </ClInclude>
+    <ClInclude Include="tonemaps\nonlinear.h">
+      <Filter>Header Files\tonemaps</Filter>
+    </ClInclude>
+    <ClInclude Include="tonemaps\reinhard.h">
+      <Filter>Header Files\tonemaps</Filter>
+    </ClInclude>
+    <ClInclude Include="volumes\exponential.h">
+      <Filter>Header Files\volumes</Filter>
+    </ClInclude>
+    <ClInclude Include="volumes\homogeneous.h">
+      <Filter>Header Files\volumes</Filter>
+    </ClInclude>
+    <ClInclude Include="volumes\volumegrid.h">
+      <Filter>Header Files\volumes</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="core\geometry\transform-sse.inl">
+      <Filter>Header Files\core\geometry</Filter>
+    </None>
+    <None Include="core\geometry\transform.inl">
+      <Filter>Header Files\core\geometry</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="gui_src\GIRLView.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="gui_src\GIRLView.h">
+      <Filter>Header Files\viewer</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gui_src\GIRLViewDoc.h">
+      <Filter>Header Files\viewer</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gui_src\GIRLViewView.h">
+      <Filter>Header Files\viewer</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gui_src\HistoryBar.h">
+      <Filter>Header Files\viewer</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gui_src\MainFrm.h">
+      <Filter>Header Files\viewer</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gui_src\PreviewBar.h">
+      <Filter>Header Files\viewer</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gui_src\resource.h">
+      <Filter>Header Files\viewer</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gui_src\stdafx.h">
+      <Filter>Header Files\viewer</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gui_src\res\code1.bin">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gui_src\res\GIRLView.ico">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gui_src\res\GIRLViewDoc.ico">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gui_src\res\ribbonfilelarge.bmp">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gui_src\res\ribbonfilesmall.bmp">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gui_src\res\ribbonhomelarge.bmp">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gui_src\res\ribbonhomesmall.bmp">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gui_src\res\ribbonicons.bmp">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gui_src\res\ribbonmain.bmp">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="core\girllex.l">
+      <Filter>Parser Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="core\girlparse.y">
+      <Filter>Parser Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

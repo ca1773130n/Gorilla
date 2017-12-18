@@ -1,0 +1,63 @@
+struct INPUT
+{
+	float2 texc : TEXCOORD0;
+	float4 toFar : TEXCOORD1;
+};
+
+#define LIGHTS 32
+
+uniform float4 camera : register(c0);
+uniform float4 lights[8] : register(c1);
+uniform float4 colors[8] : register(c9);
+
+sampler2D position : register(s0);
+sampler2D normal : register(s1);
+sampler2D albedo : register(s2);
+
+float4 main(INPUT data): COLOR0
+{
+	float4 positions, normals, albedos;
+	positions = float4((data.toFar.xyz * dot(tex2D(position, data.texc), float4(1.0, 1.0/256.0, 1.0/(256.0*256.0), 0.0))) + camera.xyz, 1.0);
+	normals = tex2D(normal, data.texc) * 2.0 - 1.0;
+	albedos = tex2D(albedo, data.texc);
+
+	float3 toLight, toLightOrt;
+	float3 toCameraOrt, toCameraRefl;
+	float4 toCamera;
+
+	toLight = lights[0].xyz - positions.xyz;
+	toLightOrt = normalize(toLight);
+		
+	toCamera.xyz = camera.xyz - positions.xyz;
+	toCameraOrt = normalize(toCamera.xyz);
+			
+	toCameraRefl = reflect(-toCameraOrt, normals);
+		
+	toCamera.w = 1.0 / dot(toCamera.xyz, toCamera.xyz);
+
+	float4 sum = float4(0,0,0,0);
+	for(int l = 0; l < 8; l++)
+	{
+		toLight = lights[l].xyz - positions.xyz;
+		toLightOrt = normalize(toLight);
+
+		float att = dot(toLight, toLight);
+		att = saturate(1.0 - (att * lights[l].w));
+
+		float diff = saturate(dot(normals.xyz, toLightOrt));
+	
+		float spec = saturate(dot(toCameraRefl, toLightOrt));
+		
+		spec = spec*spec;
+		spec = spec*spec;
+
+		float4 volV = 0.0;
+					
+		float4 diffsum = saturate(att * 0.8 * (diff + spec));
+
+		sum += (albedos * diffsum.x + volV.x) * colors[l];
+	}
+
+	return sum;
+}
+

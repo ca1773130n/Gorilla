@@ -1,0 +1,374 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E3037566-889D-4DA9-836B-391682B6E72B}</ProjectGuid>
+    <RootNamespace>GRealtimeViewer</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>14.0.25431.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)\bin\$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)\bin\$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.;../libs/include;../libs/include/OpenEXR;../GIRLCore/core;../GIRLCore/accelerators;../GIRLCore/cameras;../GIRLCore/film;../GIRLCore/filters;../GIRLCore/integrators;../GIRLCore/lights;../GIRLCore/materials;../GIRLCore/volumes;../GIRLCore/tonemaps;../GIRLCore/textures;../GIRLCore/shapes;../GIRLCore/samplers;../GIRLCore/renderer;../GIRLCore/pixelsamplers;../GIRLCore/reflection/;../GIRLCore/reflection/bxdf/;../GIRLCore/reflection/fresnel;../GIRLCore/reflection/microfacetdistribution/;../GIRLCore/spds;e:\Program Files (x86)\wxWidgets-2.8.7\include\;Core;DXUT;Utility;../GIRLCore/core/geometry;Shadow;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;BOOST_IOSTREAMS_NO_LIB;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4819;4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>GirlCore_d.lib;d3dx9d.lib;d3dx10d.lib;d3d10.lib;dxerr.lib;dxguid.lib;dxgi.lib;corona.lib;Half_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName)_d.exe</OutputFile>
+      <AdditionalLibraryDirectories>../libs/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libcd.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(TargetDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.;../libs/include;../libs/include/OpenEXR;../GIRLCore/core;../GIRLCore/accelerators;../GIRLCore/cameras;../GIRLCore/film;../GIRLCore/filters;../GIRLCore/integrators;../GIRLCore/lights;../GIRLCore/materials;../GIRLCore/volumes;../GIRLCore/tonemaps;../GIRLCore/textures;../GIRLCore/shapes;../GIRLCore/samplers;../GIRLCore/renderer;../GIRLCore/pixelsamplers;../GIRLCore/reflection/;../GIRLCore/reflection/bxdf/;../GIRLCore/reflection/fresnel;../GIRLCore/reflection/microfacetdistribution/;../GIRLCore/spds;e:\Program Files (x86)\wxWidgets-2.8.7\include\;Core;DXUT;Utility;../GIRLCore/core/geometry;Shadow;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;BOOST_IOSTREAMS_NO_LIB;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4819;4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>GirlCore_d.lib;d3dx9d.lib;d3dx10d.lib;d3d10.lib;dxerr.lib;dxguid.lib;dxgi.lib;corona_static.lib;Half_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName)_d.exe</OutputFile>
+      <AdditionalLibraryDirectories>../libs/lib/x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libcd.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(TargetDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;../libs/include;../libs/include/OpenEXR;../GIRLCore/core;../GIRLCore/accelerators;../GIRLCore/cameras;../GIRLCore/film;../GIRLCore/filters;../GIRLCore/integrators;../GIRLCore/lights;../GIRLCore/materials;../GIRLCore/volumes;../GIRLCore/tonemaps;../GIRLCore/textures;../GIRLCore/shapes;../GIRLCore/samplers;../GIRLCore/renderer;../GIRLCore/pixelsamplers;../GIRLCore/reflection/;../GIRLCore/reflection/bxdf/;../GIRLCore/reflection/fresnel;../GIRLCore/reflection/microfacetdistribution/;../GIRLCore/spds;e:\Program Files (x86)\wxWidgets-2.8.7\include\;Core;DXUT;Utility;../GIRLCore/core/geometry;Shadow;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_WIN32_WINNT=0x0501;BOOST_IOSTREAMS_NO_LIB;GIRL_USE_OPENGL;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4819;4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>GirlCore.lib;d3dx9.lib;d3dx10.lib;dxerr.lib;dxguid.lib;Half.lib;Iex.lib;IlmImf.lib;IlmThread.lib;Imath.lib;zlib.lib;dxgi.lib;d3d10.lib;corona.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>../libs/lib;E:\Program Files (x86)\Microsoft DirectX SDK (February 2010)\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libc.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;../libs/include;../libs/include/OpenEXR;../GIRLCore/core;../GIRLCore/accelerators;../GIRLCore/cameras;../GIRLCore/film;../GIRLCore/filters;../GIRLCore/integrators;../GIRLCore/lights;../GIRLCore/materials;../GIRLCore/volumes;../GIRLCore/tonemaps;../GIRLCore/textures;../GIRLCore/shapes;../GIRLCore/samplers;../GIRLCore/renderer;../GIRLCore/pixelsamplers;../GIRLCore/reflection/;../GIRLCore/reflection/bxdf/;../GIRLCore/reflection/fresnel;../GIRLCore/reflection/microfacetdistribution/;../GIRLCore/spds;e:\Program Files (x86)\wxWidgets-2.8.7\include\;Core;DXUT;Utility;../GIRLCore/core/geometry;Shadow;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_WIN32_WINNT=0x0501;BOOST_IOSTREAMS_NO_LIB;GIRL_USE_OPENGL;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4819;4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>GirlCore.lib;d3dx9.lib;d3dx10.lib;dxerr.lib;dxguid.lib;Half.lib;Iex.lib;IlmImf.lib;IlmThread.lib;Imath.lib;zlib.lib;dxgi.lib;d3d10.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>../libs/lib/x64;E:\Program Files (x86)\Microsoft DirectX SDK (August 2009)\Lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libc.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>NotSet</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Core\GCamera.cpp" />
+    <ClCompile Include="Core\GConsole.cpp" />
+    <ClCompile Include="Core\GGIRLLoader.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Core\GGlobal.cpp" />
+    <ClCompile Include="Core\GLight.cpp" />
+    <ClCompile Include="Core\GMaterial.cpp" />
+    <ClCompile Include="Core\GRenderer.cpp" />
+    <ClCompile Include="Core\GServer.cpp" />
+    <ClCompile Include="Core\GShader.cpp" />
+    <ClCompile Include="DXUT\DXUT.cpp" />
+    <ClCompile Include="DXUT\DXUTcamera.cpp" />
+    <ClCompile Include="DXUT\DXUTenum.cpp" />
+    <ClCompile Include="DXUT\DXUTgui.cpp" />
+    <ClCompile Include="DXUT\DXUTmisc.cpp" />
+    <ClCompile Include="DXUT\DXUTres.cpp" />
+    <ClCompile Include="DXUT\DXUTsettingsdlg.cpp" />
+    <ClCompile Include="DXUT\DXUTShapes.cpp" />
+    <ClCompile Include="DXUT\MeshLoader10.cpp" />
+    <ClCompile Include="DXUT\SDKmesh.cpp" />
+    <ClCompile Include="DXUT\SDKmisc.cpp" />
+    <ClCompile Include="GMesh.cpp" />
+    <ClCompile Include="GRealtimeViewer.cpp" />
+    <ClCompile Include="GRealtimeViewerDoc.cpp" />
+    <ClCompile Include="GRealtimeViewerView.cpp" />
+    <ClCompile Include="HistoryBar.cpp" />
+    <ClCompile Include="InfoBar.cpp" />
+    <ClCompile Include="loading.cpp" />
+    <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="OptionPages.cpp" />
+    <ClCompile Include="OptionPropertySheet.cpp" />
+    <ClCompile Include="PreviewBar.cpp" />
+    <ClCompile Include="Shadow\SoftShadowMap.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="Utility\bitmask.cpp" />
+    <ClCompile Include="Utility\coloring.cpp" />
+    <ClCompile Include="Utility\ltga.cpp" />
+    <ClCompile Include="Utility\OBJ.cpp" />
+    <ClCompile Include="Utility\ou_thread.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="Shaders\Daubeches2D.fx">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">fxc /T fx_4_0 /FhTest.h %(FullPath)
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename);%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">fxc /T fx_4_0 /FhTest.h %(FullPath)
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename);%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="Shaders\DeferredLighting.fx">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">fxc /T fx_4_0 /FhTest.h %(FullPath)
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename);%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">fxc /T fx_4_0 /FhTest.h %(FullPath)
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename);%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="Shaders\SoftShadowMap.fx">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">fxc /T fx_4_0 /FhTest.h %(FullPath)
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename);%(Outputs)</Outputs>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">fxc /T fx_4_0 /FhTest.h %(FullPath)
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename);%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Core\GCamera.h" />
+    <ClInclude Include="Core\GConsole.h" />
+    <ClInclude Include="Core\GGIRLLoader.h" />
+    <ClInclude Include="Core\GGlobal.h" />
+    <ClInclude Include="Core\GLight.h" />
+    <ClInclude Include="Core\GMaterial.h" />
+    <ClInclude Include="Core\GRenderer.h" />
+    <ClInclude Include="Core\GServer.h" />
+    <ClInclude Include="Core\GShader.h" />
+    <ClInclude Include="DXUT\DXUT.h" />
+    <ClInclude Include="DXUT\DXUTcamera.h" />
+    <ClInclude Include="DXUT\DXUTenum.h" />
+    <ClInclude Include="DXUT\DXUTgui.h" />
+    <ClInclude Include="DXUT\DXUTLockFreePipe.h" />
+    <ClInclude Include="DXUT\DXUTmisc.h" />
+    <ClInclude Include="DXUT\DXUTres.h" />
+    <ClInclude Include="DXUT\DXUTsettingsdlg.h" />
+    <ClInclude Include="DXUT\DXUTShapes.h" />
+    <ClInclude Include="DXUT\MeshLoader10.h" />
+    <ClInclude Include="DXUT\SDKmesh.h" />
+    <ClInclude Include="DXUT\SDKmisc.h" />
+    <ClInclude Include="GMesh.h" />
+    <ClInclude Include="GMeshSample.h" />
+    <ClInclude Include="GRealtimeViewer.h" />
+    <ClInclude Include="GRealtimeViewerDoc.h" />
+    <ClInclude Include="GRealtimeViewerView.h" />
+    <ClInclude Include="HistoryBar.h" />
+    <ClInclude Include="InfoBar.h" />
+    <ClInclude Include="Loading.h" />
+    <ClInclude Include="MainFrm.h" />
+    <ClInclude Include="OptionPages.h" />
+    <ClInclude Include="OptionPropertySheet.h" />
+    <ClInclude Include="PreviewBar.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Shadow\SoftShadowMap.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Utility\bitmask.h" />
+    <ClInclude Include="Utility\coloring.h" />
+    <ClInclude Include="Utility\corona.h" />
+    <ClInclude Include="Utility\half.h" />
+    <ClInclude Include="Utility\ltga.h" />
+    <ClInclude Include="Utility\OBJ.h" />
+    <ClInclude Include="Utility\ou_thread.h" />
+    <ClInclude Include="Utility\ptrhashmap.h" />
+    <ClInclude Include="Utility\stdint.h" />
+    <ClInclude Include="Utility\strtok_r.h" />
+    <ClInclude Include="Utility\structures.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res.ico" />
+    <Image Include="resDoc.ico" />
+    <Image Include="res\0.bmp" />
+    <Image Include="res\1.bmp" />
+    <Image Include="res\10.bmp" />
+    <Image Include="res\11.bmp" />
+    <Image Include="res\2.bmp" />
+    <Image Include="res\3.bmp" />
+    <Image Include="res\4.bmp" />
+    <Image Include="res\5.bmp" />
+    <Image Include="res\6.bmp" />
+    <Image Include="res\7.bmp" />
+    <Image Include="res\8.bmp" />
+    <Image Include="res\9.bmp" />
+    <Image Include="res\btnPause.png" />
+    <Image Include="res\btnResume.png" />
+    <Image Include="res\btnStop.png" />
+    <Image Include="res\btn_pause.bmp" />
+    <Image Include="res\btn_pause_hot.bmp" />
+    <Image Include="res\GRealtimeViewer.ico" />
+    <Image Include="res\GRealtimeViewerDoc.ico" />
+    <Image Include="res\ribbonfilelarge.bmp" />
+    <Image Include="res\ribbonfilesmall.bmp" />
+    <Image Include="res\ribbonhomelarge.bmp" />
+    <Image Include="res\ribbonhomesmall.bmp" />
+    <Image Include="res\ribbonicons.bmp" />
+    <Image Include="res\ribbonmain - org.bmp" />
+    <Image Include="res\ribbonmain - text.bmp" />
+    <Image Include="res\ribbonmain.bmp" />
+    <Image Include="res\Toolbar.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\code1.bin" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="GRealtimeViewer.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GIRLCore\GIRLCore.vcxproj">
+      <Project>{cbd93361-193b-4687-aa88-f5c5f051aff9}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="GRealtimeViewer.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

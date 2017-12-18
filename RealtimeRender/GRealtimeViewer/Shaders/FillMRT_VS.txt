@@ -1,0 +1,35 @@
+struct VS_INPUT
+{
+	float3 pos : POSITION;
+	float2 tex : TEXCOORD0;
+	float4 normal : NORMAL;
+	float4 binormal : BINORMAL;
+	float4 tangent : TANGENT;
+};
+
+struct VS_OUTPUT
+{
+	float4 pos : POSITION;
+	float4 worldPos : TEXCOORD0;
+	float3 normal : TEXCOORD1;
+	float3 binormal : TEXCOORD2;
+	float3 tangent : TEXCOORD3;
+	float2 tc : TEXCOORD4;
+};
+
+uniform float4x4 mvp : register(c0);
+uniform float4x4 model : register(c4);
+
+VS_OUTPUT main(VS_INPUT data)
+{
+	VS_OUTPUT toPS;
+	toPS.pos = mul(mvp, float4(data.pos, 1.0));
+	toPS.worldPos = float4(mul(model, float4(data.pos, 1.0)));
+	toPS.worldPos.w = mul(mvp, float4(data.pos, 1.0)).w;
+
+	toPS.normal = mul(model, float4(data.normal.xyz, 0.0));
+	toPS.binormal = mul(model, float4(data.binormal.xyz, 0.0));
+	toPS.tangent = mul(model, float4(data.tangent.xyz, 0.0));
+	toPS.tc = data.tex;
+	return toPS;
+}

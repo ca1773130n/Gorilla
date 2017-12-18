@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="RealtimeRender">
+</Property><Property Name="Solution File" Value="E:\ETRI\Projects\Go!Rilla\RealtimeRendering\RealtimeRender\RealtimeRender.sln">
+</Property><Property Name="User Options File" Value="E:\ETRI\Projects\Go!Rilla\RealtimeRendering\RealtimeRender\RealtimeRender.suo">
+</Property><Property Name="Date" Value="2009년 11월 4일 수요일">
+</Property><Property Name="Time" Value="오후 14:03">
+</Property><Property Name="Log Number" Value="2">
+</Property></Properties><Event ErrorLevel="2" Project="" Source="RealtimeRender.sln" Description="Error creating backup file: E:\ETRI\Projects\Go!Rilla\RealtimeRendering\RealtimeRender\RealtimeRender.sln.old">
+</Event><Event ErrorLevel="2" Project="" Source="RealtimeRender.suo" Description="Error creating backup file: E:\ETRI\Projects\Go!Rilla\RealtimeRendering\RealtimeRender\RealtimeRender.suo.old">
+</Event><Event ErrorLevel="0" Project="LunaShader" Source="LunaShader\LunaShader.vcproj" Description="Project upgraded successfully.">
+</Event><Event ErrorLevel="3" Project="LunaShader" Source="LunaShader\LunaShader.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="GIRLCore" Source="GIRLCore\GIRLCore.vcproj" Description="Project upgraded successfully.">
+</Event><Event ErrorLevel="3" Project="GIRLCore" Source="GIRLCore\GIRLCore.vcproj" Description="Converted">
+</Event><Event ErrorLevel="2" Project="GRealtimeViewer" Source="GRealtimeViewer\GRealtimeViewer.vcproj" Description="The following error has occurred during XML parsing:&#xA;&#xA;File: E:\ETRI\Projects\Go!Rilla\RealtimeRendering\RealtimeRender\GRealtimeViewer\GRealtimeViewer.vcproj&#xA;Line: 1&#xA;Column: 0&#xA;Error Message:&#xA;문서에는 루트 요소가 반드시 한 개 있어야 합니다.&#xA;&#xA;The file 'E:\ETRI\Projects\Go!Rilla\RealtimeRendering\RealtimeRender\GRealtimeViewer\GRealtimeViewer.vcproj' has failed to load.">
+</Event><Event ErrorLevel="2" Project="GRealtimeViewer" Source="GRealtimeViewer\GRealtimeViewer.vcproj" Description="Project upgrade failed.">
+</Event><Event ErrorLevel="3" Project="GRealtimeViewer" Source="GRealtimeViewer\GRealtimeViewer.vcproj" Description="Not Converted">
+</Event><Event ErrorLevel="0" Project="DSalphaDX9" Source="..\..\..\..\..\Resources\Source Codes\Rendering\Interactive\Deferred Rendering\DSalphaDX9\Source\DSalphaDX9.vcproj" Description="Project upgraded successfully.">
+</Event><Event ErrorLevel="3" Project="DSalphaDX9" Source="..\..\..\..\..\Resources\Source Codes\Rendering\Interactive\Deferred Rendering\DSalphaDX9\Source\DSalphaDX9.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="RealtimeRender.sln" Description="The solution file does not require conversion.">
+</Event><Event ErrorLevel="3" Project="" Source="RealtimeRender.sln" Description="No Conversion Required">
+</Event></UpgradeLog>

@@ -1,0 +1,57 @@
+struct INPUT
+{
+	float4 worldPos : TEXCOORD0;
+	float3 normal : TEXCOORD1;
+	float3 binormal : TEXCOORD2;
+	float3 tangent : TEXCOORD3;
+	float2 tc : TEXCOORD4;
+};
+
+struct OUTPUT
+{
+	float4 color1 : COLOR0;
+	float4 color2 : COLOR1;
+	float4 color3 : COLOR2;
+	float4 color4 : COLOR3;
+	float4 color5 : COLOR4;
+	float4 color6 : COLOR5;
+	float4 color7 : COLOR6;
+	float4 color8 : COLOR7;
+	float4 color9 : COLOR8;
+	float4 color10 : COLOR9;
+	float4 color11 : COLOR10;
+};
+
+#define SAMPLES 4
+
+sampler2D tex : register(s0);
+sampler2D normals : register(s1);
+
+float3 float2color(in float f)
+{
+	float3 color;
+	f *= 256.0;
+	color.x = floor(f);
+	f = (f - color.x)*256.0;
+	color.y = floor(f);
+	color.z = f - color.y;
+	color.xy *= 0.00390625; // *= 1.0/256
+	return color;
+}
+
+OUTPUT main(INPUT data)
+{
+	OUTPUT res;
+	float alphaTarget = tex2D(tex, data.tc).w;
+	float alpha = alphaTarget > 0.95 ? (1.0/SAMPLES) : ((1.0f-1.0f/float(SAMPLES))*alphaTarget)/(1.0f-alphaTarget);
+
+	float distance = data.worldPos.w/200.0;
+	float distB = frac(distance*256.0);
+
+	res.color1 = float4(float2color(distance), 1.0);
+
+	float3x3 mx = float3x3(data.normal, -data.binormal, -data.tangent);
+	res.color2 = float4(normalize(mul(tex2D(normals, data.tc).zyx*2.0-1.0, mx))*0.5+0.5, alphaTarget);
+	res.color3 = float4(tex2D(tex, data.tc).xyz, alpha);
+	return res;
+}

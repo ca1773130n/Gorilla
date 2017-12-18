@@ -1,0 +1,29 @@
+struct VS_INPUT
+{
+	float3 pos		: POSITION;	
+	float4 normal	: NORMAL;
+	float2 tex		: TEXCOORD0;
+};
+
+struct VS_OUTPUT
+{
+	float4 pos : POSITION;
+	float2 texc : TEXCOORD0;
+	float4 toFar : TEXCOORD1;
+};
+
+uniform float4x4 mvp : register(c0);
+uniform float4x4 invvp : register(c4);
+uniform float4 depth : register(c8);
+
+VS_OUTPUT main(VS_INPUT data)
+{
+	VS_OUTPUT toPS;
+	toPS.pos = float4(data.pos.xy, depth.x, 1.0);
+	toPS.texc = data.tex;
+	
+	toPS.toFar = mul(invvp, float4(data.pos.xy, 1.0, 1.0));
+	toPS.toFar /= toPS.toFar.w;
+
+	return toPS;
+}

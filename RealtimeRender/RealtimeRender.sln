@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GirlCore", "GIRLCore\GIRLCore.vcxproj", "{CBD93361-193B-4687-AA88-F5C5F051AFF9}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GRealtimeViewer", "GRealtimeViewer\GRealtimeViewer.vcxproj", "{E3037566-889D-4DA9-836B-391682B6E72B}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Demo", "Demo\Demo.vdproj", "{048C79C6-5EAE-469B-93F4-3802EF18604D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CBD93361-193B-4687-AA88-F5C5F051AFF9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CBD93361-193B-4687-AA88-F5C5F051AFF9}.Debug|Win32.Build.0 = Debug|Win32
+		{CBD93361-193B-4687-AA88-F5C5F051AFF9}.Debug|x64.ActiveCfg = Debug|x64
+		{CBD93361-193B-4687-AA88-F5C5F051AFF9}.Debug|x64.Build.0 = Debug|x64
+		{CBD93361-193B-4687-AA88-F5C5F051AFF9}.Release|Win32.ActiveCfg = Release|Win32
+		{CBD93361-193B-4687-AA88-F5C5F051AFF9}.Release|Win32.Build.0 = Release|Win32
+		{CBD93361-193B-4687-AA88-F5C5F051AFF9}.Release|x64.ActiveCfg = Release|x64
+		{E3037566-889D-4DA9-836B-391682B6E72B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E3037566-889D-4DA9-836B-391682B6E72B}.Debug|Win32.Build.0 = Debug|Win32
+		{E3037566-889D-4DA9-836B-391682B6E72B}.Debug|x64.ActiveCfg = Debug|x64
+		{E3037566-889D-4DA9-836B-391682B6E72B}.Debug|x64.Build.0 = Debug|x64
+		{E3037566-889D-4DA9-836B-391682B6E72B}.Release|Win32.ActiveCfg = Release|Win32
+		{E3037566-889D-4DA9-836B-391682B6E72B}.Release|Win32.Build.0 = Release|Win32
+		{E3037566-889D-4DA9-836B-391682B6E72B}.Release|x64.ActiveCfg = Release|x64
+		{048C79C6-5EAE-469B-93F4-3802EF18604D}.Debug|Win32.ActiveCfg = Debug
+		{048C79C6-5EAE-469B-93F4-3802EF18604D}.Debug|x64.ActiveCfg = Debug
+		{048C79C6-5EAE-469B-93F4-3802EF18604D}.Release|Win32.ActiveCfg = Release
+		{048C79C6-5EAE-469B-93F4-3802EF18604D}.Release|x64.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,185 @@
+global proc shelf_Gelato () {
+    global string $gBuffStr;
+    global string $gBuffStr0;
+    global string $gBuffStr1;
+
+
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 34
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -align "center" 
+        -label "Display Render Settings" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "selectGelato.bmp" 
+        -image1 "selectGelato.bmp" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "gelatoShowGelatoRenderGlobals()" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+        -commandRepeatable 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 34
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -align "center" 
+        -label "Preview Render (right-click for options)" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "previewRender.bmp" 
+        -image1 "previewRender.bmp" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "gelatoSetAndLaunchRender(\"preview\");" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+        -commandRepeatable 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 34
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -align "center" 
+        -label "Standard Render (right-click for options)" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "gelatoRender.bmp" 
+        -image1 "gelatoRender.bmp" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "gelatoSetAndLaunchRender(\"standard\");" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+        -commandRepeatable 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 34
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -align "center" 
+        -label "Sorbetto Render (right-click for options)" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "sorb.bmp" 
+        -image1 "sorb.bmp" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "gelatoSetAndLaunchRender(\"sorbetto\");" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+        -commandRepeatable 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 0
+        -width 34
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -align "center" 
+        -label "Sorbetto Refresh" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "refreshsorb.bmp" 
+        -image1 "refreshsorb.bmp" 
+        -disabledImage "refreshsorbDisabled.bmp" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "gelatoSorbettoRefresh();" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+        -commandRepeatable 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 34
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -align "center" 
+        -label "Bake Textures" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "gelatoBake.bmp" 
+        -image1 "gelatoBake.bmp" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "gelatoBakeTextures();" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+        -commandRepeatable 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 34
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -align "center" 
+        -label "Show Render Log" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "gelatoLog.bmp" 
+        -image1 "gelatoLog.bmp" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "gelatoShowRenderLog();" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+        -commandRepeatable 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 34
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -align "center" 
+        -label "Gelato Help" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "gelatoHelp.bmp" 
+        -image1 "gelatoHelp.bmp" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "gelatoShowGelatoHelp();" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+        -commandRepeatable 1
+    ;
+
+} 

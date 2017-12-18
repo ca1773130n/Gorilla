@@ -1,0 +1,915 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>GirlCore</ProjectName>
+    <ProjectGuid>{CBD93361-193B-4687-AA88-F5C5F051AFF9}</ProjectGuid>
+    <RootNamespace>GirlCore</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>NotSet</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>NotSet</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>14.0.25431.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)\libs\lib\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)\libs\lib\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>./girlmaterials;../lunashader;..;../libs/include;../libs/include/OpenEXR;./core;./accelerators;./cameras;./film;./filters;./integrators;./lights;./materials;./volumes;./tonemaps;./textures;./shapes;./samplers;./renderer;./pixelsamplers;./core/reflection/;./core/reflection/bxdf/;./core/reflection/fresnel;./core/reflection/microfacetdistribution/;./spds;e:\Program Files (x86)\wxWidgets-2.8.7\include\;./spds/data;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_WIN32_WINNT=0x0501;BOOST_IOSTREAMS_NO_LIB;LUX_USE_OPENGL;WIN32_LEAN_AND_MEAN;GIRLCORE_SOURCE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4819;4996;4311;4312; 4267;4273;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>LunaShader_d.lib;Half_d.lib;Iex_d.lib;IlmImf_d.lib;IlmThread_d.lib;Imath_d.lib;zlibd.lib;ws2_32.lib;libboost_iostreams-vc80-mt-gd-1_34_1-zlib-bzip2.lib;fltkpngd.lib;fltkjpegd.lib;wxtiffd.lib;MerlBRDFRead_D.lib;PbrtBRDFRead_D.lib;BRDF_Vol_Read_D.lib;MerlNganFit_D.lib;shell32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName)_d.dll</OutputFile>
+      <AdditionalLibraryDirectories>../libs/lib/;E:\Program Files (x86)\boost\boost_1_34_1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libcd.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(SolutionDir)\bin\$(Configuration)\$(TargetName).pdb</ProgramDatabaseFile>
+    </Link>
+    <PostBuildEvent>
+      <Message>Deploying GirlCore...</Message>
+      <Command>copy $(OutDir)$(ProjectName)_d.dll $(SolutionDir)\bin\$(Configuration)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>./girlmaterials;../lunashader;..;../libs/include;../libs/include/OpenEXR;./core;./accelerators;./cameras;./film;./filters;./integrators;./lights;./materials;./volumes;./tonemaps;./textures;./shapes;./samplers;./renderer;./pixelsamplers;./core/reflection/;./core/reflection/bxdf/;./core/reflection/fresnel;./core/reflection/microfacetdistribution/;./spds;e:\Program Files (x86)\wxWidgets-2.8.7\include\;./spds/data;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_WIN32_WINNT=0x0501;BOOST_IOSTREAMS_NO_LIB;LUX_USE_OPENGL;WIN32_LEAN_AND_MEAN;GIRLCORE_SOURCE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4819;4996;4311;4312; 4267;4273;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>Half_d.lib;Iex_d.lib;IlmImf_d.lib;IlmThread_d.lib;Imath_d.lib;libboost_bzip2-vc80-mt-gd-1_34_1.lib;libboost_zlib-vc80-mt-gd-1_34_1.lib;libboost_iostreams-vc80-mt-gd-1_34_1.lib;ws2_32.lib;fltk2_pngd.lib;fltk2_jpegd.lib;wxtiffd_x64.lib;shell32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName)_d.dll</OutputFile>
+      <AdditionalLibraryDirectories>../libs/lib/x64;E:\Program Files (x86)\boost\boost_1_34_1\stage64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libcd.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(SolutionDir)\bin\$(Configuration)\$(TargetName).pdb</ProgramDatabaseFile>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Message>Deploying GirlCore...</Message>
+      <Command>copy $(OutDir)$(ProjectName)_d.dll $(SolutionDir)\bin\$(Configuration)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>./girlmaterials;../lunashader;..;../libs/include;../libs/include/OpenEXR;./core;./accelerators;./cameras;./film;./filters;./integrators;./lights;./materials;./volumes;./tonemaps;./textures;./shapes;./samplers;./renderer;./pixelsamplers;./core/reflection/;./core/reflection/bxdf/;./core/reflection/fresnel;./core/reflection/microfacetdistribution/;./spds;c:\Program Files (x86)\wxWidgets-2.8.7\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_WIN32_WINNT=0x0501;BOOST_IOSTREAMS_NO_LIB;LUX_USE_OPENGL;WIN32_LEAN_AND_MEAN;GIRLCORE_SOURCE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4819;4996;4311;4312; 4267;4273;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>LunaShader.lib;Half.lib;Iex.lib;IlmImf.lib;IlmThread.lib;Imath.lib;zlib.lib;libboost_iostreams-vc80-mt-1_34_1-zlib-bzip2.lib;libbz2.lib;fltkjpeg.lib;fltkpng.lib;wxtiff.lib;MerlBRDFRead.lib;PbrtBRDFRead.lib;BRDF_Vol_Read.lib;MerlNganFit.lib;shell32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>../libs/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libc.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Message>Depolying GirlCore...</Message>
+      <Command>copy $(OutDir)$(ProjectName).dll $(SolutionDir)\bin\$(Configuration)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>./girlmaterials;../lunashader;..;../libs/include;../libs/include/OpenEXR;./core;./accelerators;./cameras;./film;./filters;./integrators;./lights;./materials;./volumes;./tonemaps;./textures;./shapes;./samplers;./renderer;./pixelsamplers;./core/reflection/;./core/reflection/bxdf/;./core/reflection/fresnel;./core/reflection/microfacetdistribution/;./spds;e:\Program Files (x86)\wxWidgets-2.8.7\include\;./spds/data;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_WIN32_WINNT=0x0501;BOOST_IOSTREAMS_NO_LIB;LUX_USE_OPENGL;WIN32_LEAN_AND_MEAN;GIRLCORE_SOURCE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4819;4996;4311;4312; 4267;4273;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>Half_d.lib;Iex_d.lib;IlmImf_d.lib;IlmThread_d.lib;Imath_d.lib;libboost_bzip2-vc80-mt-1_34_1.lib;libboost_zlib-vc80-mt-1_34_1.lib;libboost_iostreams-vc80-mt-1_34_1.lib;ws2_32.lib;fltk2_pngd.lib;fltk2_jpegd.lib;wxtiffd_x64.lib;shell32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>../libs/lib/x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libc.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Message>Depolying GirlCore...</Message>
+      <Command>copy $(OutDir)$(ProjectName).dll $(SolutionDir)\bin\$(Configuration)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="accelerators\bruteforce.cpp" />
+    <ClCompile Include="accelerators\bvhaccel.cpp" />
+    <ClCompile Include="accelerators\grid.cpp" />
+    <ClCompile Include="accelerators\kdtreecache.cpp" />
+    <ClCompile Include="accelerators\qbvhaccel.cpp" />
+    <ClCompile Include="accelerators\tabreckdtree.cpp" />
+    <ClCompile Include="accelerators\unsafekdtree.cpp" />
+    <ClCompile Include="cameras\environment.cpp" />
+    <ClCompile Include="cameras\orthographic.cpp" />
+    <ClCompile Include="cameras\perspective.cpp" />
+    <ClCompile Include="cameras\realistic.cpp" />
+    <ClCompile Include="core\api.cpp" />
+    <ClCompile Include="core\camera.cpp" />
+    <ClCompile Include="core\color.cpp" />
+    <ClCompile Include="core\context.cpp" />
+    <ClCompile Include="core\dynload.cpp" />
+    <ClCompile Include="core\exrio.cpp" />
+    <ClCompile Include="core\film.cpp" />
+    <ClCompile Include="core\geometry.cpp" />
+    <ClCompile Include="core\geometry\matrix4x4.cpp" />
+    <ClCompile Include="core\geometry\quaternion.cpp" />
+    <ClCompile Include="core\geometry\transform.cpp" />
+    <ClCompile Include="core\girllex.cpp" />
+    <ClCompile Include="core\girlparse.cpp" />
+    <ClCompile Include="core\igiio.cpp" />
+    <ClCompile Include="core\imagereader.cpp" />
+    <ClCompile Include="core\light.cpp" />
+    <ClCompile Include="core\material.cpp" />
+    <ClCompile Include="core\mc.cpp" />
+    <ClCompile Include="core\osfunc.cpp" />
+    <ClCompile Include="core\paramset.cpp" />
+    <ClCompile Include="core\parser.cpp" />
+    <ClCompile Include="core\photonmap.cpp" />
+    <ClCompile Include="core\primitive.cpp" />
+    <ClCompile Include="core\reflection.cpp" />
+    <ClCompile Include="core\reflection\bxdf.cpp" />
+    <ClCompile Include="core\reflection\bxdf\BlinnBRDF.cpp" />
+    <ClCompile Include="core\reflection\bxdf\BlinnPhongBxDF.cpp" />
+    <ClCompile Include="core\reflection\bxdf\cooktorrance.cpp" />
+    <ClCompile Include="core\reflection\bxdf\erfutil.cpp" />
+    <ClCompile Include="core\reflection\bxdf\fresnelblend.cpp" />
+    <ClCompile Include="core\reflection\bxdf\GlossyAshikhminShirley.cpp" />
+    <ClCompile Include="core\reflection\bxdf\HTSGBRDF.cpp" />
+    <ClCompile Include="core\reflection\bxdf\lafortune.cpp" />
+    <ClCompile Include="core\reflection\bxdf\lambertian.cpp" />
+    <ClCompile Include="core\reflection\bxdf\MerlBxDF.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="core\reflection\bxdf\MerlBxDFFit.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="core\reflection\bxdf\microfacet.cpp" />
+    <ClCompile Include="core\reflection\bxdf\nulltransmission.cpp" />
+    <ClCompile Include="core\reflection\bxdf\orennayar.cpp" />
+    <ClCompile Include="core\reflection\bxdf\PbrtBxDF.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="core\reflection\bxdf\PhongBxDF.cpp" />
+    <ClCompile Include="core\reflection\bxdf\specularreflection.cpp" />
+    <ClCompile Include="core\reflection\bxdf\speculartransmission.cpp" />
+    <ClCompile Include="core\reflection\bxdf\WardBRDF.cpp" />
+    <ClCompile Include="core\reflection\bxdf\WardDuerBRDF.cpp" />
+    <ClCompile Include="core\reflection\fresnel.cpp" />
+    <ClCompile Include="core\reflection\fresnel\fresnelconductor.cpp" />
+    <ClCompile Include="core\reflection\fresnel\fresneldielectric.cpp" />
+    <ClCompile Include="core\reflection\fresnel\fresnelnoop.cpp" />
+    <ClCompile Include="core\reflection\fresnel\fresnelslick.cpp" />
+    <ClCompile Include="core\reflection\microfacetdistribution.cpp" />
+    <ClCompile Include="core\reflection\microfacetdistribution\anisotropic.cpp" />
+    <ClCompile Include="core\reflection\microfacetdistribution\beckmann.cpp" />
+    <ClCompile Include="core\reflection\microfacetdistribution\blinn.cpp" />
+    <ClCompile Include="core\reflection\microfacetdistribution\wardisotropic.cpp" />
+    <ClCompile Include="core\renderfarm.cpp" />
+    <ClCompile Include="core\sampling.cpp" />
+    <ClCompile Include="core\scene.cpp" />
+    <ClCompile Include="core\shape.cpp" />
+    <ClCompile Include="core\spd.cpp" />
+    <ClCompile Include="core\spectrum.cpp" />
+    <ClCompile Include="core\spectrumwavelengths.cpp" />
+    <ClCompile Include="core\texture.cpp" />
+    <ClCompile Include="core\timer.cpp" />
+    <ClCompile Include="core\transport.cpp" />
+    <ClCompile Include="core\util.cpp" />
+    <ClCompile Include="core\volume.cpp" />
+    <ClCompile Include="film\fleximage.cpp" />
+    <ClCompile Include="filters\box.cpp" />
+    <ClCompile Include="filters\gaussian.cpp" />
+    <ClCompile Include="filters\mitchell.cpp" />
+    <ClCompile Include="filters\sinc.cpp" />
+    <ClCompile Include="filters\triangle.cpp" />
+    <ClCompile Include="girlmaterials\LunaBxDF.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="girlmaterials\LunaGirlMaterial.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="girlmaterials\LunaShaderFactory.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="girlmaterials\ParamConvertor.cpp" />
+    <ClCompile Include="gui_src\GIRLView.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="gui_src\GIRLViewDoc.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="gui_src\GIRLViewView.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="gui_src\HistoryBar.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="gui_src\MainFrm.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="gui_src\PreviewBar.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="integrators\bidirectional.cpp" />
+    <ClCompile Include="integrators\directlighting.cpp" />
+    <ClCompile Include="integrators\distributedpath.cpp" />
+    <ClCompile Include="integrators\emission.cpp" />
+    <ClCompile Include="integrators\exphotonmap.cpp" />
+    <ClCompile Include="integrators\path.cpp" />
+    <ClCompile Include="integrators\single.cpp" />
+    <ClCompile Include="lights\area.cpp" />
+    <ClCompile Include="lights\distant.cpp" />
+    <ClCompile Include="lights\goniometric.cpp" />
+    <ClCompile Include="lights\infinite.cpp" />
+    <ClCompile Include="lights\infinitesample.cpp" />
+    <ClCompile Include="lights\point.cpp" />
+    <ClCompile Include="lights\projection.cpp" />
+    <ClCompile Include="lights\sky.cpp" />
+    <ClCompile Include="lights\spot.cpp" />
+    <ClCompile Include="lights\sun.cpp" />
+    <ClCompile Include="materials\AshikhminShirley.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="materials\BlinnPhong.cpp" />
+    <ClCompile Include="materials\carpaint.cpp" />
+    <ClCompile Include="materials\GIRLBlinn.cpp" />
+    <ClCompile Include="materials\GIRLLambert.cpp" />
+    <ClCompile Include="materials\GIRLMaterial.cpp" />
+    <ClCompile Include="materials\GIRLPhong.cpp" />
+    <ClCompile Include="materials\glass.cpp" />
+    <ClCompile Include="materials\glossy.cpp" />
+    <ClCompile Include="materials\He.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="materials\matte.cpp" />
+    <ClCompile Include="materials\mattetranslucent.cpp" />
+    <ClCompile Include="materials\MerlAshikhminShirley.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="materials\MerlBlinnPhong.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="materials\MerlBRDF.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="materials\MerlBRDFFit.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="materials\MerlCookTorrance.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="materials\MerlHe.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="materials\MerlLafortune.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="materials\MerlWard.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="materials\MerlWardDuer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="materials\metal.cpp" />
+    <ClCompile Include="materials\mirror.cpp" />
+    <ClCompile Include="materials\mixmaterial.cpp" />
+    <ClCompile Include="materials\null.cpp" />
+    <ClCompile Include="materials\PbrtBRDF.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="materials\roughglass.cpp" />
+    <ClCompile Include="materials\shinymetal.cpp" />
+    <ClCompile Include="materials\Ward.cpp" />
+    <ClCompile Include="pixelsamplers\hilbertpx.cpp" />
+    <ClCompile Include="pixelsamplers\linear.cpp" />
+    <ClCompile Include="pixelsamplers\lowdiscrepancypx.cpp" />
+    <ClCompile Include="pixelsamplers\tilepx.cpp" />
+    <ClCompile Include="pixelsamplers\vegas.cpp" />
+    <ClCompile Include="renderer\renderserver.cpp" />
+    <ClCompile Include="samplers\erpt.cpp" />
+    <ClCompile Include="samplers\lowdiscrepancy.cpp" />
+    <ClCompile Include="samplers\metrosampler.cpp" />
+    <ClCompile Include="samplers\random.cpp" />
+    <ClCompile Include="shapes\barytrianglemesh.cpp" />
+    <ClCompile Include="shapes\cone.cpp" />
+    <ClCompile Include="shapes\cylinder.cpp" />
+    <ClCompile Include="shapes\disk.cpp" />
+    <ClCompile Include="shapes\heightfield.cpp" />
+    <ClCompile Include="shapes\hyperboloid.cpp" />
+    <ClCompile Include="shapes\lenscomponent.cpp" />
+    <ClCompile Include="shapes\loopsubdiv.cpp" />
+    <ClCompile Include="shapes\mesh.cpp" />
+    <ClCompile Include="shapes\meshbarytriangle.cpp" />
+    <ClCompile Include="shapes\meshquadrilateral.cpp" />
+    <ClCompile Include="shapes\meshwaldtriangle.cpp" />
+    <ClCompile Include="shapes\nurbs.cpp" />
+    <ClCompile Include="shapes\paraboloid.cpp" />
+    <ClCompile Include="shapes\plymesh.cpp" />
+    <ClCompile Include="shapes\plymesh\rply.c" />
+    <ClCompile Include="shapes\quad.cpp" />
+    <ClCompile Include="shapes\quadrilateral.cpp" />
+    <ClCompile Include="shapes\sphere.cpp" />
+    <ClCompile Include="shapes\torus.cpp" />
+    <ClCompile Include="shapes\waldtrianglemesh.cpp" />
+    <ClCompile Include="spds\blackbodyspd.cpp" />
+    <ClCompile Include="spds\equalspd.cpp" />
+    <ClCompile Include="spds\frequencyspd.cpp" />
+    <ClCompile Include="spds\gaussianspd.cpp" />
+    <ClCompile Include="spds\irregular.cpp" />
+    <ClCompile Include="spds\regular.cpp" />
+    <ClCompile Include="spds\rgbillum.cpp" />
+    <ClCompile Include="spds\rgbrefl.cpp" />
+    <ClCompile Include="textures\bilerp.cpp" />
+    <ClCompile Include="textures\blackbody.cpp" />
+    <ClCompile Include="textures\blender_blend.cpp" />
+    <ClCompile Include="textures\blender_clouds.cpp" />
+    <ClCompile Include="textures\blender_distortednoise.cpp" />
+    <ClCompile Include="textures\blender_magic.cpp" />
+    <ClCompile Include="textures\blender_marble.cpp" />
+    <ClCompile Include="textures\blender_musgrave.cpp" />
+    <ClCompile Include="textures\blender_noise.cpp" />
+    <ClCompile Include="textures\blender_noiselib.cpp" />
+    <ClCompile Include="textures\blender_stucci.cpp" />
+    <ClCompile Include="textures\blender_texlib.cpp" />
+    <ClCompile Include="textures\blender_voronoi.cpp" />
+    <ClCompile Include="textures\blender_wood.cpp" />
+    <ClCompile Include="textures\checkerboard.cpp" />
+    <ClCompile Include="textures\constant.cpp" />
+    <ClCompile Include="textures\dots.cpp" />
+    <ClCompile Include="textures\equalenergy.cpp" />
+    <ClCompile Include="textures\fbm.cpp" />
+    <ClCompile Include="textures\frequency.cpp" />
+    <ClCompile Include="textures\gaussian.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+    </ClCompile>
+    <ClCompile Include="textures\harlequin.cpp" />
+    <ClCompile Include="textures\imagemap.cpp" />
+    <ClCompile Include="textures\irregulardata.cpp" />
+    <ClCompile Include="textures\marble.cpp" />
+    <ClCompile Include="textures\mix.cpp" />
+    <ClCompile Include="textures\regulardata.cpp" />
+    <ClCompile Include="textures\scale.cpp" />
+    <ClCompile Include="textures\uv.cpp" />
+    <ClCompile Include="textures\windy.cpp" />
+    <ClCompile Include="textures\wrinkled.cpp" />
+    <ClCompile Include="tonemaps\contrast.cpp" />
+    <ClCompile Include="tonemaps\highcontrast.cpp" />
+    <ClCompile Include="tonemaps\maxwhite.cpp" />
+    <ClCompile Include="tonemaps\nonlinear.cpp" />
+    <ClCompile Include="tonemaps\reinhard.cpp" />
+    <ClCompile Include="volumes\exponential.cpp" />
+    <ClCompile Include="volumes\homogeneous.cpp" />
+    <ClCompile Include="volumes\volumegrid.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="accelerators\bruteforce.h" />
+    <ClInclude Include="accelerators\bvhaccel.h" />
+    <ClInclude Include="accelerators\grid.h" />
+    <ClInclude Include="accelerators\kdtreecache.h" />
+    <ClInclude Include="accelerators\qbvhaccel.h" />
+    <ClInclude Include="accelerators\tabreckdtreeaccel.h" />
+    <ClInclude Include="accelerators\unsafekdtreeaccel.h" />
+    <ClInclude Include="cameras\environment.h" />
+    <ClInclude Include="cameras\orthographic.h" />
+    <ClInclude Include="cameras\perspective.h" />
+    <ClInclude Include="cameras\realistic.h" />
+    <ClInclude Include="core\api.h" />
+    <ClInclude Include="core\camera.h" />
+    <ClInclude Include="core\cimg.h" />
+    <ClInclude Include="core\color.h" />
+    <ClInclude Include="core\context.h" />
+    <ClInclude Include="core\contribution.h" />
+    <ClInclude Include="core\dynload.h" />
+    <ClInclude Include="core\error.h" />
+    <ClInclude Include="core\exrio.h" />
+    <ClInclude Include="core\film.h" />
+    <ClInclude Include="core\filter.h" />
+    <ClInclude Include="core\geometry.h" />
+    <ClInclude Include="core\geometry\bbox.h" />
+    <ClInclude Include="core\geometry\matrix4x4-sse.h" />
+    <ClInclude Include="core\geometry\matrix4x4.h" />
+    <ClInclude Include="core\geometry\normal.h" />
+    <ClInclude Include="core\geometry\point.h" />
+    <ClInclude Include="core\geometry\quaternion.h" />
+    <ClInclude Include="core\geometry\ray.h" />
+    <ClInclude Include="core\geometry\raydifferential.h" />
+    <ClInclude Include="core\geometry\transform.h" />
+    <ClInclude Include="core\geometry\vector.h" />
+    <ClInclude Include="core\girl.h" />
+    <ClInclude Include="core\igiio.h" />
+    <ClInclude Include="core\imagereader.h" />
+    <ClInclude Include="core\kdtree.h" />
+    <ClInclude Include="core\light.h" />
+    <ClInclude Include="core\material.h" />
+    <ClInclude Include="core\mc.h" />
+    <ClInclude Include="core\memory.h" />
+    <ClInclude Include="core\mipmap.h" />
+    <ClInclude Include="core\motionsystem.h" />
+    <ClInclude Include="core\octree.h" />
+    <ClInclude Include="core\osfunc.h" />
+    <ClInclude Include="core\paramset.h" />
+    <ClInclude Include="core\photonmap.h" />
+    <ClInclude Include="core\primitive.h" />
+    <ClInclude Include="core\randomgen.h" />
+    <ClInclude Include="core\reflection.h" />
+    <ClInclude Include="core\reflection\bxdf.h" />
+    <ClInclude Include="core\reflection\bxdf\BlinnBRDF.h" />
+    <ClInclude Include="core\reflection\bxdf\BlinnPhongBxDF.h" />
+    <ClInclude Include="core\reflection\bxdf\cooktorrance.h" />
+    <ClInclude Include="core\reflection\bxdf\fresnelblend.h" />
+    <ClInclude Include="core\reflection\bxdf\fresnelterm.h" />
+    <ClInclude Include="core\reflection\bxdf\GlossyAshikhminShirley.h" />
+    <ClInclude Include="core\reflection\bxdf\HTSGBRDF.h" />
+    <ClInclude Include="core\reflection\bxdf\lafortune.h" />
+    <ClInclude Include="core\reflection\bxdf\lambertian.h" />
+    <ClInclude Include="core\reflection\bxdf\merlbxdf.h" />
+    <ClInclude Include="core\reflection\bxdf\MerlBxDFFit.h" />
+    <ClInclude Include="core\reflection\bxdf\microfacet.h" />
+    <ClInclude Include="core\reflection\bxdf\mycomplex.h" />
+    <ClInclude Include="core\reflection\bxdf\nulltransmission.h" />
+    <ClInclude Include="core\reflection\bxdf\orennayar.h" />
+    <ClInclude Include="core\reflection\bxdf\PbrtBxDF.h" />
+    <ClInclude Include="core\reflection\bxdf\PhongBxDF.h" />
+    <ClInclude Include="core\reflection\bxdf\specularreflection.h" />
+    <ClInclude Include="core\reflection\bxdf\speculartransmission.h" />
+    <ClInclude Include="core\reflection\bxdf\util.h" />
+    <ClInclude Include="core\reflection\bxdf\WardBRDF.h" />
+    <ClInclude Include="core\reflection\bxdf\WardDuerBRDF.h" />
+    <ClInclude Include="core\reflection\fresnel.h" />
+    <ClInclude Include="core\reflection\fresnel\fresnelconductor.h" />
+    <ClInclude Include="core\reflection\fresnel\fresneldielectric.h" />
+    <ClInclude Include="core\reflection\fresnel\fresnelnoop.h" />
+    <ClInclude Include="core\reflection\fresnel\fresnelslick.h" />
+    <ClInclude Include="core\reflection\microfacetdistribution.h" />
+    <ClInclude Include="core\reflection\microfacetdistribution\anisotropic.h" />
+    <ClInclude Include="core\reflection\microfacetdistribution\beckmann.h" />
+    <ClInclude Include="core\reflection\microfacetdistribution\blinn.h" />
+    <ClInclude Include="core\reflection\microfacetdistribution\wardisotropic.h" />
+    <ClInclude Include="core\renderfarm.h" />
+    <ClInclude Include="core\sampling.h" />
+    <ClInclude Include="core\scene.h" />
+    <ClInclude Include="core\shape.h" />
+    <ClInclude Include="core\spd.h" />
+    <ClInclude Include="core\spectrum.h" />
+    <ClInclude Include="core\spectrumwavelengths.h" />
+    <ClInclude Include="core\stats.h" />
+    <ClInclude Include="core\texture.h" />
+    <ClInclude Include="core\texturecolor.h" />
+    <ClInclude Include="core\timer.h" />
+    <ClInclude Include="core\tonemap.h" />
+    <ClInclude Include="core\transport.h" />
+    <ClInclude Include="core\volume.h" />
+    <ClInclude Include="film\fleximage.h" />
+    <ClInclude Include="filters\box.h" />
+    <ClInclude Include="filters\gaussian.h" />
+    <ClInclude Include="filters\mitchell.h" />
+    <ClInclude Include="filters\sinc.h" />
+    <ClInclude Include="filters\triangle.h" />
+    <ClInclude Include="girlmaterials\girlmaterials.h" />
+    <ClInclude Include="girlmaterials\LunaBxDF.h" />
+    <ClInclude Include="girlmaterials\LunaGirlMaterial.h" />
+    <ClInclude Include="girlmaterials\LunaShaderFactory.h" />
+    <ClInclude Include="girlmaterials\ParamConvertor.h" />
+    <CustomBuild Include="gui_src\GIRLView.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="gui_src\GIRLViewDoc.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="gui_src\GIRLViewView.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="gui_src\HistoryBar.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="gui_src\MainFrm.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="gui_src\PreviewBar.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="gui_src\resource.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="gui_src\stdafx.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <ClInclude Include="integrators\bidirectional.h" />
+    <ClInclude Include="integrators\directlighting.h" />
+    <ClInclude Include="integrators\distributedpath.h" />
+    <ClInclude Include="integrators\emission.h" />
+    <ClInclude Include="integrators\exphotonmap.h" />
+    <ClInclude Include="integrators\path.h" />
+    <ClInclude Include="integrators\single.h" />
+    <ClInclude Include="lights\data\skychroma_spect.h" />
+    <ClInclude Include="lights\data\sun_spect.h" />
+    <ClInclude Include="lights\distant.h" />
+    <ClInclude Include="lights\goniometric.h" />
+    <ClInclude Include="lights\infinite.h" />
+    <ClInclude Include="lights\infinitesample.h" />
+    <ClInclude Include="lights\point.h" />
+    <ClInclude Include="lights\projection.h" />
+    <ClInclude Include="lights\sky.h" />
+    <ClInclude Include="lights\spot.h" />
+    <ClInclude Include="lights\sun.h" />
+    <ClInclude Include="materials\AshikhminShirley.h" />
+    <ClInclude Include="materials\BlinnPhong.h" />
+    <ClInclude Include="materials\carpaint.h" />
+    <ClInclude Include="materials\GIRLBlinn.h" />
+    <ClInclude Include="materials\GIRLLambert.h" />
+    <ClInclude Include="materials\GIRLMaterial.h" />
+    <ClInclude Include="materials\GIRLPhong.h" />
+    <ClInclude Include="materials\glass.h" />
+    <ClInclude Include="materials\glossy.h" />
+    <ClInclude Include="materials\He.h" />
+    <ClInclude Include="materials\matte.h" />
+    <ClInclude Include="materials\mattetranslucent.h" />
+    <ClInclude Include="materials\MerlAshikhminShirley.h" />
+    <ClInclude Include="materials\MerlBlinnPhong.h" />
+    <ClInclude Include="materials\MerlBRDF.h" />
+    <ClInclude Include="materials\MerlBRDFFit.h" />
+    <ClInclude Include="materials\MerlCookTorrance.h" />
+    <ClInclude Include="materials\MerlHe.h" />
+    <ClInclude Include="materials\MerlLafortune.h" />
+    <ClInclude Include="materials\MerlWard.h" />
+    <ClInclude Include="materials\MerlWardDuer.h" />
+    <ClInclude Include="materials\metal.h" />
+    <ClInclude Include="materials\mirror.h" />
+    <ClInclude Include="materials\mixmaterial.h" />
+    <ClInclude Include="materials\null.h" />
+    <ClInclude Include="materials\PbrtBRDF.h" />
+    <ClInclude Include="materials\roughglass.h" />
+    <ClInclude Include="materials\shinymetal.h" />
+    <ClInclude Include="materials\Ward.h" />
+    <ClInclude Include="pixelsamplers\hilbertpx.h" />
+    <ClInclude Include="pixelsamplers\linear.h" />
+    <ClInclude Include="pixelsamplers\lowdiscrepancypx.h" />
+    <ClInclude Include="pixelsamplers\tilepx.h" />
+    <ClInclude Include="pixelsamplers\vegas.h" />
+    <ClInclude Include="renderer\renderserver.h" />
+    <ClInclude Include="samplers\erpt.h" />
+    <ClInclude Include="samplers\lowdiscrepancy.h" />
+    <ClInclude Include="samplers\metrosampler.h" />
+    <ClInclude Include="samplers\random.h" />
+    <ClInclude Include="shapes\barytrianglemesh.h" />
+    <ClInclude Include="shapes\cone.h" />
+    <ClInclude Include="shapes\cylinder.h" />
+    <ClInclude Include="shapes\disk.h" />
+    <ClInclude Include="shapes\heightfield.h" />
+    <ClInclude Include="shapes\hyperboloid.h" />
+    <ClInclude Include="shapes\lenscomponent.h" />
+    <ClInclude Include="shapes\loopsubdiv.h" />
+    <ClInclude Include="shapes\mesh.h" />
+    <ClInclude Include="shapes\nurbs.h" />
+    <ClInclude Include="shapes\paraboloid.h" />
+    <ClInclude Include="shapes\plymesh.h" />
+    <ClInclude Include="shapes\plymesh\rply.h" />
+    <ClInclude Include="shapes\quad.h" />
+    <ClInclude Include="shapes\quadrilateral.h" />
+    <ClInclude Include="shapes\sphere.h" />
+    <ClInclude Include="shapes\torus.h" />
+    <ClInclude Include="shapes\waldtrianglemesh.h" />
+    <ClInclude Include="spds\blackbodyspd.h" />
+    <ClInclude Include="spds\data\rgbD65_32.h" />
+    <ClInclude Include="spds\data\rgbE_32.h" />
+    <ClInclude Include="spds\data\xyzbasis.h" />
+    <ClInclude Include="spds\equalspd.h" />
+    <ClInclude Include="spds\frequencyspd.h" />
+    <ClInclude Include="spds\gaussianspd.h" />
+    <ClInclude Include="spds\irregular.h" />
+    <ClInclude Include="spds\regular.h" />
+    <ClInclude Include="spds\rgbillum.h" />
+    <ClInclude Include="spds\rgbrefl.h" />
+    <ClInclude Include="textures\bilerp.h" />
+    <ClInclude Include="textures\blackbody.h" />
+    <ClInclude Include="textures\blender_blend.h" />
+    <ClInclude Include="textures\blender_clouds.h" />
+    <ClInclude Include="textures\blender_distortednoise.h" />
+    <ClInclude Include="textures\blender_magic.h" />
+    <ClInclude Include="textures\blender_marble.h" />
+    <ClInclude Include="textures\blender_musgrave.h" />
+    <ClInclude Include="textures\blender_noise.h" />
+    <ClInclude Include="textures\blender_noiselib.h" />
+    <ClInclude Include="textures\blender_stucci.h" />
+    <ClInclude Include="textures\blender_texlib.h" />
+    <ClInclude Include="textures\blender_voronoi.h" />
+    <ClInclude Include="textures\blender_wood.h" />
+    <ClInclude Include="textures\checkerboard.h" />
+    <ClInclude Include="textures\constant.h" />
+    <ClInclude Include="textures\dots.h" />
+    <ClInclude Include="textures\equalenergy.h" />
+    <ClInclude Include="textures\fbm.h" />
+    <ClInclude Include="textures\frequency.h" />
+    <ClInclude Include="textures\gaussian.h" />
+    <ClInclude Include="textures\harlequin.h" />
+    <ClInclude Include="textures\imagemap.h" />
+    <ClInclude Include="textures\irregulardata.h" />
+    <ClInclude Include="textures\marble.h" />
+    <ClInclude Include="textures\mix.h" />
+    <ClInclude Include="textures\regulardata.h" />
+    <ClInclude Include="textures\scale.h" />
+    <ClInclude Include="textures\uv.h" />
+    <ClInclude Include="textures\windy.h" />
+    <ClInclude Include="textures\wrinkled.h" />
+    <ClInclude Include="tonemaps\contrast.h" />
+    <ClInclude Include="tonemaps\highcontrast.h" />
+    <ClInclude Include="tonemaps\maxwhite.h" />
+    <ClInclude Include="tonemaps\nonlinear.h" />
+    <ClInclude Include="tonemaps\reinhard.h" />
+    <ClInclude Include="volumes\exponential.h" />
+    <ClInclude Include="volumes\homogeneous.h" />
+    <ClInclude Include="volumes\volumegrid.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="core\geometry\transform-sse.inl" />
+    <None Include="core\geometry\transform.inl" />
+    <CustomBuild Include="core\girllex.l">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Lexing %(Filename)</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">flex -o"%(RootDir)%(Directory)/%(Filename).cpp" "%(FullPath)"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)/luxlex.cpp;%(Outputs)</Outputs>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Lexing %(Filename)</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">flex -o"%(RootDir)%(Directory)/%(Filename).cpp" "%(FullPath)"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RootDir)%(Directory)/luxlex.cpp;%(Outputs)</Outputs>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Lexing %(Filename)</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">flex -o"%(RootDir)%(Directory)/%(Filename).cpp" "%(FullPath)"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)/luxlex.cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Lexing %(Filename)</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">flex -o"%(RootDir)%(Directory)/%(Filename).cpp" "%(FullPath)"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(RootDir)%(Directory)/luxlex.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="core\girlparse.y">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Yacc%27ing %(Filename)</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">bison -d -v -t -o"%(RootDir)%(Directory)/%(Filename).cpp" "%(FullPath)"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)/%(Filename).cpp;%(RootDir)%(Directory)/%(Filename).hpp;%(Outputs)</Outputs>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Yacc%27ing %(Filename)</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">bison -d -v -t -o"%(RootDir)%(Directory)/%(Filename).cpp" "%(FullPath)"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RootDir)%(Directory)/%(Filename).cpp;%(RootDir)%(Directory)/%(Filename).hpp;%(Outputs)</Outputs>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Yacc%27ing %(Filename)</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">bison -d -v -t -o"%(RootDir)%(Directory)/%(Filename).cpp" "%(FullPath)"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)/%(Filename).cpp;%(RootDir)%(Directory)/%(Filename).hpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Yacc%27ing %(Filename)</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">bison -d -v -t -o"%(RootDir)%(Directory)/%(Filename).cpp" "%(FullPath)"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(RootDir)%(Directory)/%(Filename).cpp;%(RootDir)%(Directory)/%(Filename).hpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="gui_src\res\code1.bin">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="gui_src\res\GIRLView.ico">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="gui_src\res\GIRLViewDoc.ico">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="gui_src\res\ribbonfilelarge.bmp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="gui_src\res\ribbonfilesmall.bmp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="gui_src\res\ribbonhomelarge.bmp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="gui_src\res\ribbonhomesmall.bmp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="gui_src\res\ribbonicons.bmp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="gui_src\res\ribbonmain.bmp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="gui_src\GIRLView.rc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ResourceCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

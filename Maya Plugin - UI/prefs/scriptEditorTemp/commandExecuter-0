@@ -1,0 +1,6 @@
+#from maya import cmds
+#cmds.convertSolidTx("face:EKing_face1214:Nking_head_eye2:Nking_head_eye_sc033_11_16_Nking_head_confirm_y_lambert20.color", "face:king_faceShape", antiAlias=1, bm=1, fts=1, sp=0, sh=0, alpha=0, doubleSided=0, componentRange=1, uvr=(1.0,2.0,0.0,1.0), resolutionX=512, resolutionY=512)
+
+a = "a_b_c_vv"
+v = a.split("_")
+print v[len(v) - 2]

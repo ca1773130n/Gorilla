@@ -1,0 +1,9 @@
+//Maya Preference 2009 (Release 1)
+//
+//
+evalDeferred("autoLoadPlugin(\"\", \"Fur\", \"Fur\")");
+evalDeferred("autoLoadPlugin(\"\", \"DirectConnect\", \"DirectConnect\")");
+evalDeferred("autoLoadPlugin(\"\", \"ikSpringSolver\", \"ikSpringSolver\")");
+evalDeferred("autoLoadPlugin(\"\", \"rotateHelper\", \"rotateHelper\")");
+evalDeferred("autoLoadPlugin(\"\", \"MayaMuscle\", \"MayaMuscle\")");
+evalDeferred("autoLoadPlugin(\"\", \"GirlPlugin.py\", \"GirlPlugin\")");

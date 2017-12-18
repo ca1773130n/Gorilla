@@ -1,0 +1,35 @@
+struct INPUT
+{
+	float2 texc : TEXCOORD0;
+};
+
+
+
+sampler2D position : register(s0);
+sampler2D normal : register(s1);
+
+float4 main(INPUT data): COLOR0
+{
+	float2 texSh[4];
+	texSh[0] = float2(0.0, 0.0);
+	texSh[1] = float2(0.5/1024.0, 0.0);
+	texSh[2] = float2(0.0, 0.5/768.0);
+	texSh[3] = float2(0.5/1024.0, 0.5/768.0);
+
+	float4 positions[4], normals[4];
+	for(int i = 0; i < 4; i++)
+	{
+		positions[i] = tex2D(position, data.texc + texSh[i]);
+		normals[i] = tex2D(normal, data.texc + texSh[i]);
+	}
+	
+	float diffx = (positions[0].x-positions[1].x);
+	float diffy = (positions[0].x-positions[2].x);
+	float diffz = (positions[0].x-positions[3].x);
+	
+	float4 diffx2 = (normals[0]-normals[1]);
+	float4 diffy2 = (normals[0]-normals[2]);
+	float4 diffz2 = (normals[0]-normals[3]);
+
+	return ((diffx * diffx)+(diffy * diffy)+(diffz * diffz))*100.0+(dot(diffx2, diffx2)+dot(diffy2, diffy2)+dot(diffz2, diffz2));
+}
